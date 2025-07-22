@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Halaman Tidak Ditemukan - Modern UI Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+    <!-- [DIUBAH] Tombol SVG diganti dengan ikon Lucide -->
+    <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
+        aria-label="Buka Menu">
+        <i data-lucide="menu"></i>
+    </button>
+
+    <div class="layout-wrapper">
+        <!-- ===== SIDEBAR (STRUKTUR STANDAR) ===== -->
+        <aside class="sidebar" id="mainSidebar">
+            <div class="sidebar-header">
+                <h3 class="fs-4">Navigasi</h3>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html">
+                    <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+                    Components Overview
+                </a>
+                <div class="sidebar-collapsible">
+                    <a href="#" class="sidebar-collapsible__toggle">
+                        <span class="d-flex align-items-center">
+                            <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                            Basic Components
+                        </span>
+                        <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+                    </a>
+                    <div class="sidebar-collapsible__content">
+                        <a href="card.html"><i data-lucide="box" class="sidebar-nav__icon"></i> Card / Panel</a>
+                        <a href="button.html"><i data-lucide="square" class="sidebar-nav__icon"></i> Buttons</a>
+                        <a href="form-elements.html"><i data-lucide="form-input" class="sidebar-nav__icon"></i> Form
+                            Elements</a>
+                    </div>
+                </div>
+                <div class="sidebar-collapsible">
+                    <a href="#" class="sidebar-collapsible__toggle">
+                        <span class="d-flex align-items-center">
+                            <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                            Advanced
+                        </span>
+                        <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+                    </a>
+                    <div class="sidebar-collapsible__content">
+                        <a href="dialog.html"><i data-lucide="panel-top" class="sidebar-nav__icon"></i> Dialog /
+                            Modal</a>
+                        <a href="progress-bar.html"><i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
+                            Progress Bar</a>
+                        <a href="tabel.html"><i data-lucide="table" class="sidebar-nav__icon"></i> Data Tables</a>
+                    </div>
+                </div>
+                <a href="whats-new.html">
+                    <i data-lucide="star" class="sidebar-nav__icon"></i>
+                    What's New
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="userSettingsToggle" class="sidebar-user-button">
+                    <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+                    <span>Pengguna</span>
+                    <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+                </button>
+                <div id="userSettingsMenu" class="user-settings-menu">
+                    <ul class="user-settings-list">
+                        <li><a href="#"><i data-lucide="user" class="user-settings-icon"></i><span>Profil
+                                    Saya</span></a></li>
+                        <li><a href="#"><i data-lucide="sliders-horizontal"
+                                    class="user-settings-icon"></i><span>Pengaturan</span></a></li>
+                        <li>
+                            <hr class="form-divider m-0">
+                        </li>
+                        <li class="user-settings-item">
+                            <span class="user-settings-label">Mode Malam</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="darkModeToggle" />
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </li>
+                        <li class="user-settings-item">
+                            <div id="themeColorPicker" class="theme-picker"></div>
+                        </li>
+                        <li>
+                            <hr class="form-divider m-0">
+                        </li>
+                        <li><a href="#" class="text-danger"><i data-lucide="log-out"
+                                    class="user-settings-icon"></i><span>Keluar</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===== KONTEN UTAMA ===== -->
+        <main class="main-content">
+            <div class="container d-flex align-items-center justify-content-center"
+                style="min-height: calc(100vh - 40px);">
+                <div class="text-center">
+                    <i data-lucide="server-crash" class="text-primary"
+                        style="width: 80px; height: 80px; margin-bottom: 2rem;"></i>
+                    <h1 class="fs-1 fw-bold">404</h1>
+                    <p class="fs-4 fw-bold">Halaman Tidak Ditemukan</p>
+                    <p class="text-muted mb-5">
+                        Maaf, halaman yang Anda cari tidak ada atau mungkin telah dipindahkan.
+                    </p>
+                    <a href="index.html" class="btn btn--primary">
+                        <i data-lucide="home" style="width: 18px; height: 18px; margin-right: 0.5rem;"></i>
+                        Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>

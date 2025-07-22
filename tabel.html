@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern UI Kit - Data Tables</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Menggunakan font Inter untuk gaya modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Pastikan path ke style.css yang sudah di-re-skin benar -->
+    <link rel="stylesheet" href="assets/style.css" />
+
+</head>
+
+<body>
+    <!-- Tombol sidebar sekarang menggunakan ikon SVG untuk gaya modern -->
+    <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
+        aria-label="Buka Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <div class="layout-wrapper">
+        <!-- ===== SIDEBAR (STRUKTUR BARU) ===== -->
+        <aside class="sidebar" id="mainSidebar">
+            <div class="sidebar-header">
+                <h3 class="fs-4">Navigasi</h3>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- Link Level Atas -->
+                <a href="index.html">
+                    <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+                    Components Overview
+                </a>
+
+                <!-- Grup Collapsible 1: Basic Components -->
+                <div class="sidebar-collapsible">
+                    <a href="#" class="sidebar-collapsible__toggle">
+                        <span class="d-flex align-items-center">
+                            <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                            Basic Components
+                        </span>
+                        <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+                    </a>
+                    <div class="sidebar-collapsible__content">
+                        <a href="card.html">
+                            <i data-lucide="box" class="sidebar-nav__icon"></i>
+                            Card / Panel
+                        </a>
+                        <a href="button.html">
+                            <i data-lucide="square" class="sidebar-nav__icon"></i>
+                            Buttons
+                        </a>
+                        <a href="form-elements.html">
+                            <i data-lucide="form-input" class="sidebar-nav__icon"></i>
+                            Form Elements
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Grup Collapsible 2: Advanced Components -->
+                <div class="sidebar-collapsible">
+                    <a href="#" class="sidebar-collapsible__toggle">
+                        <span class="d-flex align-items-center">
+                            <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                            Advanced
+                        </span>
+                        <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+                    </a>
+                    <div class="sidebar-collapsible__content">
+                        <a href="dialog.html">
+                            <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+                            Dialog / Modal
+                        </a>
+                        <a href="progress-bar.html">
+                            <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
+                            Progress Bar
+                        </a>
+                        <a href="tabel.html" class="active"> <!-- Halaman ini aktif -->
+                            <i data-lucide="table" class="sidebar-nav__icon"></i>
+                            Data Tables
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Link Level Atas Lainnya -->
+                <a href="whats-new.html">
+                    <i data-lucide="star" class="sidebar-nav__icon"></i>
+                    What's New
+                </a>
+            </nav>
+
+            <!-- Toggle Dark Mode utama ada di sini, di bagian bawah sidebar -->
+            <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna -->
+            <div class="sidebar-footer">
+                <!-- Tombol Pemicu Menu Pengaturan -->
+                <button id="userSettingsToggle" class="sidebar-user-button">
+                    <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+                    <span>Pengguna</span>
+                    <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+                </button>
+
+                <!-- Menu Pop-up Pengaturan (Awalnya Tersembunyi) -->
+                <div id="userSettingsMenu" class="user-settings-menu">
+                    <ul class="user-settings-list">
+                        <li>
+                            <a href="#">
+                                <i data-lucide="user" class="user-settings-icon"></i>
+                                <span>Profil Saya</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i data-lucide="sliders-horizontal" class="user-settings-icon"></i>
+                                <span>Pengaturan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="form-divider m-0">
+                        </li>
+                        <li class="user-settings-item">
+                            <span class="user-settings-label">Mode Malam</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="darkModeToggle" />
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </li>
+                        <li class="user-settings-item">
+                            <div id="themeColorPicker" class="theme-picker">
+                                <!-- Tombol warna akan dibuat oleh JavaScript -->
+                            </div>
+                        </li>
+                        <li>
+                            <hr class="form-divider m-0">
+                        </li>
+                        <li>
+                            <a href="#" class="text-danger">
+                                <i data-lucide="log-out" class="user-settings-icon"></i>
+                                <span>Keluar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ===== KONTEN UTAMA ===== -->
+        <main class="main-content">
+            <div class="container my-5">
+                <header class="mb-5">
+                    <h1 class="fs-2">Data Tables Showcase</h1>
+                    <p class="text-muted">Berbagai variasi untuk menampilkan data tabular secara efektif dengan gaya
+                        modern.</p>
+                </header>
+
+                <!-- 3. Tabel Responsif (sudah diterapkan di atas) -->
+
+                <!-- 4. "Datatable" Interaktif -->
+                <section class="panel" id="interactive-datatable-panel" aria-labelledby="table-interactive-title">
+                    <div class="panel-header">
+                        <h4 class="panel-title" id="table-interactive-title">4. Datatable Interaktif Lengkap</h4>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Header untuk Search dan Tombol Aksi -->
+                        <div class="datatable-header">
+                            <div class="datatable-entries">
+                                <select id="table-entries" class="form-select">
+                                    <option value="5">5</option>
+                                    <option value="10" selected>10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                            <div class="datatable-search">
+                                <input type="text" id="table-search" class="form-control"
+                                    placeholder="Cari data pengguna...">
+                            </div>
+                            <div class="datatable-actions">
+                                <button class="btn btn--icon">
+                                    <i data-lucide="printer" width="16" height="16"></i>
+                                    <span>Cetak</span>
+                                </button>
+                                <button class="btn btn--icon">
+                                    <i data-lucide="download" width="16" height="16"></i>
+                                    <span>Export</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table data-table--hover">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable-header" data-sort-dir="asc">User ID</th>
+                                        <th class="sortable-header" data-sort-dir="asc">Nama</th>
+                                        <th class="sortable-header" data-sort-dir="asc">Status</th>
+                                        <th class="sortable-header" data-sort-dir="asc">Poin</th>
+                                        <!-- [BARU] Header Kolom Aksi -->
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="interactive-tbody">
+                                    <!-- Data diisi oleh JS, tapi kita letakkan di sini sebagai fallback/template -->
+                                    <tr>
+                                        <td>USR-007</td>
+                                        <td>Budi Santoso</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>1500</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-002</td>
+                                        <td>Citra Lestari</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>850</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-015</td>
+                                        <td>Agus Wijaya</td>
+                                        <td><span class="badge badge--danger">Tidak Aktif</span></td>
+                                        <td>250</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-001</td>
+                                        <td>Dewi Anggraini</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>2300</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-005</td>
+                                        <td>Eka Putra</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>1200</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-021</td>
+                                        <td>Fajar Nugroho</td>
+                                        <td><span class="badge badge--warning">Review</span></td>
+                                        <td>50</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-011</td>
+                                        <td>Gita Permata</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>1800</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-003</td>
+                                        <td>Hadi Prawiro</td>
+                                        <td><span class="badge badge--danger">Tidak Aktif</span></td>
+                                        <td>100</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-009</td>
+                                        <td>Indah Sari</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>950</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>USR-012</td>
+                                        <td>Joko Mulyono</td>
+                                        <td><span class="badge badge--success">Aktif</span></td>
+                                        <td>1100</td>
+                                        <!-- [BARU] Sel Aksi dengan Ikon -->
+                                        <td>
+                                            <div class="d-flex" style="gap: 0.75rem;">
+                                                <a href="#" title="Edit Pengguna" class="text-muted">
+                                                    <i data-lucide="file-pen-line" width="18" height="18"></i>
+                                                </a>
+                                                <a href="#" title="Hapus Pengguna" class="text-danger">
+                                                    <i data-lucide="trash-2" width="18" height="18"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Footer untuk Pagination -->
+                    <div class="panel-footer">
+                        <div class="pagination-info" id="table-info">
+                            <!-- Konten diisi oleh JavaScript -->
+                        </div>
+
+                        <nav aria-label="Navigasi Tabel">
+                            <ul class="pagination" id="table-pagination">
+                                <!-- Kontrol pagination akan dibuat oleh JavaScript -->
+                            </ul>
+                        </nav>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/script.js"></script>
+
+</body>
+
+</html>

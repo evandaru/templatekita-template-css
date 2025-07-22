@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrutalistCSS - Component Showcase</title>
+  <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- 1. Impor Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- 2. Hubungkan CSS -->
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
+  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
+    aria-label="Buka Menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="layout-wrapper">
+    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
+    <aside class="sidebar" id="mainSidebar">
+      <div class="sidebar-header">
+        <h3 class="fs-4">Navigasi</h3>
+      </div>
+
+      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
+      <nav class="sidebar-nav">
+        <!-- Link Level Atas -->
+        <a href="index.html">
+          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+          Components Overview
+        </a>
+
+        <!-- Grup Collapsible 1: Basic Components -->
+        <div class="sidebar-collapsible">
+          <a href="#" class="sidebar-collapsible__toggle">
+            <span class="d-flex align-items-center">
+              <i data-lucide="layers" class="sidebar-nav__icon"></i>
+              Basic Components
+            </span>
+            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          </a>
+          <div class="sidebar-collapsible__content">
+            <a href="card.html">
+              <i data-lucide="box" class="sidebar-nav__icon"></i>
+              Card / Panel
+            </a>
+            <a href="button.html">
+              <i data-lucide="square" class="sidebar-nav__icon"></i>
+              Buttons
+            </a>
+            <a href="form-elements.html">
+              <i data-lucide="form-input" class="sidebar-nav__icon"></i>
+              Form Elements
+            </a>
+          </div>
+        </div>
+
+        <!-- Grup Collapsible 2: Advanced Components (dibuat terbuka karena item di dalamnya aktif) -->
+        <div class="sidebar-collapsible is-open">
+          <a href="#" class="sidebar-collapsible__toggle">
+            <span class="d-flex align-items-center">
+              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+              Advanced
+            </span>
+            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          </a>
+          <div class="sidebar-collapsible__content">
+            <a href="dialog.html" class="active"> <!-- Halaman ini aktif -->
+              <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+              Dialog / Modal
+            </a>
+            <a href="progress-bar.html">
+              <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
+              Progress Bar
+            </a>
+            <a href="tabel.html">
+              <i data-lucide="table" class="sidebar-nav__icon"></i>
+              Data Tables
+            </a>
+          </div>
+        </div>
+
+        <!-- Link Level Atas Lainnya -->
+        <a href="whats-new.html">
+          <i data-lucide="star" class="sidebar-nav__icon"></i>
+          What's New
+        </a>
+      </nav>
+
+      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
+      <div class="sidebar-footer">
+        <button id="userSettingsToggle" class="sidebar-user-button">
+          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+          <span>Pengguna</span>
+          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+        </button>
+
+        <div id="userSettingsMenu" class="user-settings-menu">
+          <ul class="user-settings-list">
+            <li><a href="#"><i data-lucide="user" class="user-settings-icon"></i><span>Profil Saya</span></a></li>
+            <li><a href="#"><i data-lucide="sliders-horizontal"
+                  class="user-settings-icon"></i><span>Pengaturan</span></a></li>
+            <li>
+              <hr class="form-divider m-0">
+            </li>
+            <li class="user-settings-item">
+              <span class="user-settings-label">Mode Malam</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle" />
+                <span class="toggle-slider"></span>
+              </label>
+            </li>
+            <li class="user-settings-item">
+              <div id="themeColorPicker" class="theme-picker"></div>
+            </li>
+            <li>
+              <hr class="form-divider m-0">
+            </li>
+            <li><a href="#" class="text-danger"><i data-lucide="log-out"
+                  class="user-settings-icon"></i><span>Keluar</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
+    <main class="main-content">
+      <div class="container my-5">
+        <header class="mb-5">
+          <h1 class="fs-2">Dialog / Modal Showcase</h1>
+          <p>
+            Berbagai contoh interaktif untuk menampilkan konten dalam lapisan
+            di atas halaman.
+          </p>
+        </header>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h4 class="panel-title">
+              >> Klik Tombol untuk Mencoba Setiap Variasi
+            </h4>
+          </div>
+          <div class="panel-body">
+            <p>
+              Setiap tombol di bawah ini akan membuka jenis modal yang
+              berbeda, menunjukkan berbagai kemungkinan penggunaan dan gaya.
+            </p>
+            <div class="button-group mt-4">
+              <button class="btn" data-modal-target="#modal-standard">
+                Dialog Standar
+              </button>
+              <button class="btn" data-modal-target="#modal-large">
+                Dialog Besar (Large)
+              </button>
+              <button class="btn" data-modal-target="#modal-scroll">
+                Dialog Scrollable
+              </button>
+              <button class="btn" data-modal-target="#modal-form">
+                Dialog dengan Form
+              </button>
+              <button class="btn" data-modal-target="#modal-top">
+                Notifikasi dari Atas
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <!-- Akhir dari .layout-wrapper -->
+
+  <!-- ======================================================= -->
+  <!-- KOLEKSI MODAL (BAGIAN INI TIDAK DIUBAH) -->
+  <!-- ======================================================= -->
+
+  <!-- 1. Modal Standar -->
+  <div class="modal" id="modal-standard">
+    <div class="modal-dialog">
+      <div class="panel">
+        <div class="panel-header">
+          <h3 class="panel-title">Konfirmasi Aksi</h3>
+          <button class="btn-close" data-modal-close aria-label="Tutup">×</button>
+        </div>
+        <div class="panel-body">
+          <p>Apakah Anda yakin ingin melanjutkan? Aksi ini tidak dapat diurungkan.</p>
+        </div>
+        <div class="panel-footer d-flex justify-content-between">
+          <button class="btn" data-modal-close>Batal</button>
+          <button class="btn btn--primary btn--filled" data-modal-close
+            onclick="createBrutalistAlert('Aksi Dikonfirmasi!', 'success');">
+            Ya, Lanjutkan
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Besar (Large) -->
+  <div class="modal" id="modal-large">
+    <div class="modal-dialog modal-dialog--lg">
+      <div class="panel">
+        <div class="panel-header">
+          <h3 class="panel-title">Detail Informasi Produk</h3>
+          <button class="btn-close" data-modal-close aria-label="Tutup">×</button>
+        </div>
+        <div class="panel-body">
+          <p>Gunakan <code>.modal-dialog--lg</code> untuk konten yang lebih lebar, seperti menampilkan detail data atau
+            gambar yang lebih besar.</p>
+          <img src="https://placehold.co/800x200" alt="Placeholder" style="width: 100%; margin-top: 1rem" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal Scrollable -->
+  <div class="modal" id="modal-scroll">
+    <div class="modal-dialog">
+      <div class="panel">
+        <div class="panel-header">
+          <h3 class="panel-title">Syarat dan Ketentuan</h3>
+          <button class="btn-close" data-modal-close aria-label="Tutup">×</button>
+        </div>
+        <div class="panel-body modal-body--scrollable">
+          <p>Ini adalah contoh konten yang sangat panjang. Dengan kelas <code>.modal-body--scrollable</code>, hanya area
+            ini yang akan memiliki scrollbar, bukan seluruh halaman.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+            dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
+            massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est
+            eleifend mi, non fermentum diam nisl sit amet erat.</p>
+          <p>Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in
+            risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede.
+            Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh.</p>
+          <p>Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam. Sorbi in justo. Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In magna. Sed et turpis.
+            Integer justo. Sed quis lacus. Nam nulla. Curabitur vel justo. Vivamus ut turpis. Proin quam. Vivamus
+            egestas. Nunc tempor. Mauris ac felis. Ut nec est.</p>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-block" data-modal-close>Saya Mengerti dan Setuju</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal dengan Form -->
+  <div class="modal" id="modal-form">
+    <div class="modal-dialog modal-dialog--sm">
+      <div class="panel">
+        <div class="panel-header">
+          <h3 class="panel-title">USER LOGIN</h3>
+          <button class="btn-close" data-modal-close aria-label="Tutup">×</button>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="modal-username" class="form-label">Username:</label>
+            <input type="text" id="modal-username" class="form-control" placeholder="user_id" />
+          </div>
+          <div class="form-group">
+            <label for="modal-password" class="form-label">Password:</label>
+            <input type="password" id="modal-password" class="form-control" placeholder="********" />
+          </div>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-block" data-modal-close>LOGIN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Modal dari Atas -->
+  <div class="modal modal--from-top" id="modal-top">
+    <div class="modal-dialog modal-dialog--sm">
+      <div class="panel">
+        <div class="panel-body d-flex justify-content-between align-items-center">
+          <span>Pembaruan sistem akan dilakukan malam ini.</span>
+          <button class="btn" data-modal-close>OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Hubungkan JavaScript -->
+  <script src="assets/script.js"></script>
+</body>
+
+</html>

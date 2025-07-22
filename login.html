@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Modern UI Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <style>
+        /* Gaya spesifik untuk halaman login */
+        body.login-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body class="login-page">
+
+    <main style="width: 100%; max-width: 400px;">
+        <div class="text-center mb-5">
+            <!-- [DIUBAH] Ikon Lucide ditambahkan -->
+            <i data-lucide="log-in" class="text-primary mx-auto"
+                style="width: 48px; height: 48px; margin-bottom: 1.5rem;"></i>
+            <!-- [DIUBAH] Judul menggunakan warna tema primer -->
+            <h1 class="fs-2 text-primary">Selamat Datang Kembali</h1>
+            <p class="text-muted">Silakan masuk untuk melanjutkan.</p>
+        </div>
+
+        <div class="panel">
+            <div class="panel-body">
+                <form action="index.html"> <!-- Arahkan ke halaman utama setelah login -->
+                    <div class="form-group">
+                        <label for="email" class="form-label">Alamat Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="nama@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="********" required>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center my-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember-me">
+                            <label class="form-check-label" for="remember-me">Ingat Saya</label>
+                        </div>
+                        <a href="#" class="link-primary" style="font-size: 0.9em;">Lupa password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn-block">Masuk</button>
+                </form>
+            </div>
+        </div>
+
+        <p class="text-center text-muted mt-4">
+            Belum punya akun? <a href="#" class="link-primary fw-bold">Buat akun sekarang</a>
+        </p>
+    </main>
+
+    <!-- [DIUBAH] Skrip kecil untuk menerapkan tema dari localStorage -->
+    <script>
+    </script>
+</body>
+
+</html>

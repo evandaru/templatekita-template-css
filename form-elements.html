@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BrutalistCSS - Component Showcase</title>
+  <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- 1. Impor Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- 2. Hubungkan CSS -->
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+
+<body>
+  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
+  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
+    aria-label="Buka Menu">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+
+  <div class="layout-wrapper">
+    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
+    <aside class="sidebar" id="mainSidebar">
+      <div class="sidebar-header">
+        <h3 class="fs-4">Navigasi</h3>
+      </div>
+
+      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
+      <nav class="sidebar-nav">
+        <!-- Link Level Atas -->
+        <a href="index.html">
+          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+          Components Overview
+        </a>
+
+        <!-- Grup Collapsible 1: Basic Components (dibuat terbuka karena item di dalamnya aktif) -->
+        <div class="sidebar-collapsible is-open">
+          <a href="#" class="sidebar-collapsible__toggle">
+            <span class="d-flex align-items-center">
+              <i data-lucide="layers" class="sidebar-nav__icon"></i>
+              Basic Components
+            </span>
+            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          </a>
+          <div class="sidebar-collapsible__content">
+            <a href="card.html">
+              <i data-lucide="box" class="sidebar-nav__icon"></i>
+              Card / Panel
+            </a>
+            <a href="button.html">
+              <i data-lucide="square" class="sidebar-nav__icon"></i>
+              Buttons
+            </a>
+            <a href="form-elements.html" class="active"> <!-- Halaman ini aktif -->
+              <i data-lucide="form-input" class="sidebar-nav__icon"></i>
+              Form Elements
+            </a>
+          </div>
+        </div>
+
+        <!-- Grup Collapsible 2: Advanced Components -->
+        <div class="sidebar-collapsible">
+          <a href="#" class="sidebar-collapsible__toggle">
+            <span class="d-flex align-items-center">
+              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+              Advanced
+            </span>
+            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          </a>
+          <div class="sidebar-collapsible__content">
+            <a href="dialog.html">
+              <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+              Dialog / Modal
+            </a>
+            <a href="progress-bar.html">
+              <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
+              Progress Bar
+            </a>
+            <a href="tabel.html">
+              <i data-lucide="table" class="sidebar-nav__icon"></i>
+              Data Tables
+            </a>
+          </div>
+        </div>
+
+        <!-- Link Level Atas Lainnya -->
+        <a href="whats-new.html">
+          <i data-lucide="star" class="sidebar-nav__icon"></i>
+          What's New
+        </a>
+      </nav>
+
+      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
+      <div class="sidebar-footer">
+        <button id="userSettingsToggle" class="sidebar-user-button">
+          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+          <span>Pengguna</span>
+          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+        </button>
+
+        <div id="userSettingsMenu" class="user-settings-menu">
+          <ul class="user-settings-list">
+            <li><a href="#"><i data-lucide="user" class="user-settings-icon"></i><span>Profil Saya</span></a></li>
+            <li><a href="#"><i data-lucide="sliders-horizontal"
+                  class="user-settings-icon"></i><span>Pengaturan</span></a></li>
+            <li>
+              <hr class="form-divider m-0">
+            </li>
+            <li class="user-settings-item">
+              <span class="user-settings-label">Mode Malam</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="darkModeToggle" />
+                <span class="toggle-slider"></span>
+              </label>
+            </li>
+            <li class="user-settings-item">
+              <div id="themeColorPicker" class="theme-picker"></div>
+            </li>
+            <li>
+              <hr class="form-divider m-0">
+            </li>
+            <li><a href="#" class="text-danger"><i data-lucide="log-out"
+                  class="user-settings-icon"></i><span>Keluar</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
+    <main class="main-content">
+      <div class="container my-5">
+        <header class="mb-5">
+          <h1 class="fs-2">Form Elements Showcase</h1>
+          <p>
+            Beragam komponen untuk mengumpulkan input dari pengguna, lengkap
+            dengan state dan variasinya.
+          </p>
+        </header>
+
+        <!-- 1. Text Inputs & Textarea -->
+        <section class="panel mb-5" aria-labelledby="text-inputs-title">
+          <div class="panel-header">
+            <h4 class="panel-title" id="text-inputs-title">
+              Text Inputs & Textarea
+            </h4>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="input-default" class="form-label">Default Input</label>
+                  <input type="text" id="input-default" class="form-control" placeholder="Ketik di sini..." />
+                </div>
+                <div class="form-group">
+                  <label for="input-valid" class="form-label">Valid Input</label>
+                  <input type="text" id="input-valid" class="form-control is-valid" value="Input benar" />
+                  <div class="form-text-success">Bagus!</div>
+                </div>
+                <div class="form-group">
+                  <label for="input-invalid" class="form-label">Invalid Input</label>
+                  <input type="email" id="input-invalid" class="form-control is-invalid" value="bukan-email"
+                    aria-describedby="email-error" />
+                  <div id="email-error" class="form-text-danger">
+                    Format email salah.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="input-disabled" class="form-label">Disabled Input</label>
+                  <input type="text" id="input-disabled" class="form-control" placeholder="Tidak bisa diisi" disabled />
+                </div>
+                <div class="form-group">
+                  <label for="textarea" class="form-label">Textarea</label>
+                  <textarea id="textarea" class="form-control" rows="3" placeholder="Tulis pesan panjang..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Input Groups -->
+        <section class="panel mb-5" aria-labelledby="input-groups-title">
+          <div class="panel-header">
+            <h4 class="panel-title" id="input-groups-title">Input Groups</h4>
+          </div>
+          <div class="panel-body">
+            <p>Menggabungkan input dengan tombol atau teks.</p>
+            <div class="form-group">
+              <label class="form-label">Cari Pengguna</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="user_id..." />
+                <button class="btn">CARI</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">URL Website</label>
+              <div class="input-group">
+                <span class="input-group-text">https://</span>
+                <input type="text" class="form-control" placeholder="domain.com" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Selection Controls -->
+        <section class="panel mb-5" aria-labelledby="selection-controls-title">
+          <div class="panel-header">
+            <h4 class="panel-title" id="selection-controls-title">
+              Selection Controls
+            </h4>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="ex-dropdown" class="form-label">Dropdown / Select</label>
+              <select id="ex-dropdown" class="form-select">
+                <option>Pilihan 1</option>
+                <option>Pilihan 2</option>
+                <option>Pilihan 3</option>
+              </select>
+            </div>
+            <hr class="form-divider" />
+            <div class="form-group">
+              <label class="form-label">Checkbox</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ex-check1" checked />
+                <label class="form-check-label" for="ex-check1">Opsi A</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ex-check2" />
+                <label class="form-check-label" for="ex-check2">Opsi B</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ex-check3" disabled />
+                <label class="form-check-label" for="ex-check3">Opsi Disabled</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Radio Buttons</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ex-radio" id="ex-radio1" checked />
+                <label class="form-check-label" for="ex-radio1">Pilih Saya</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ex-radio" id="ex-radio2" />
+                <label class="form-check-label" for="ex-radio2">Atau Pilih Saya</label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Advanced Inputs -->
+        <section class="panel mb-5" aria-labelledby="advanced-inputs-title">
+          <div class="panel-header">
+            <h4 class="panel-title" id="advanced-inputs-title">
+              Advanced Inputs
+            </h4>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="form-label">Custom File Input</label>
+              <div class="form-control-file">
+                <input type="file" id="customFile" class="form-control-file-input"
+                  onchange="document.getElementById('file-label').textContent = this.files[0] ? this.files[0].name : 'Pilih file...'" />
+                <label for="customFile" class="form-control-file-label" id="file-label">Pilih file...</label>
+              </div>
+            </div>
+            <hr class="form-divider" />
+            <div class="form-group">
+              <label for="customRange" class="form-label">Volume: <span id="rangeValue">50</span>%</label>
+              <input type="range" class="form-range" id="customRange" min="0" max="100" value="50"
+                oninput="document.getElementById('rangeValue').textContent = this.value" />
+            </div>
+            <hr class="form-divider" />
+            <div class="form-group">
+              <label class="form-label">Toggle Switches</label>
+              <div class="d-flex align-items-center" style="gap: 20px">
+                <label class="toggle-switch toggle-switch--sm">
+                  <input type="checkbox" /><span class="toggle-slider"></span>
+                </label>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked /><span class="toggle-slider"></span>
+                </label>
+                <label class="toggle-switch toggle-switch--lg">
+                  <input type="checkbox" /><span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+
+</html>
