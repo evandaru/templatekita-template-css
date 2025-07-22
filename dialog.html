@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrutalistCSS - Component Showcase</title>
+  <title>TemplateKita - Component Showcase</title>
   <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -137,7 +137,7 @@
       </div>
     </aside>
 
-    <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
+    <!-- ===== KONTEN UTAMA ===== -->
     <main class="main-content">
       <div class="container my-5">
         <header class="mb-5">
@@ -148,6 +148,7 @@
           </p>
         </header>
 
+        <!-- Bagian Interaktif (Tombol) -->
         <section class="panel">
           <div class="panel-header">
             <h4 class="panel-title">
@@ -178,13 +179,142 @@
             </div>
           </div>
         </section>
+
+        <!-- [DITAMBAHKAN] Bagian untuk menampilkan modal secara statis -->
+        <section class="panel mt-5">
+          <div class="panel-header">
+            <h4 class="panel-title">
+              >> Tampilan Statis Setiap Modal
+            </h4>
+          </div>
+          <div class="panel-body">
+            <p>
+              Di bawah ini adalah tampilan dari setiap komponen modal yang ditampilkan secara langsung di halaman agar
+              struktur dan gayanya dapat terlihat tanpa perlu interaksi klik.
+            </p>
+
+            <div class="static-modal-container mt-4">
+              <!-- Tampilan Statis 1: Modal Standar -->
+              <h3 class="fs-4 mt-5 mb-2">1. Dialog Standar</h3>
+              <div class="modal-dialog">
+                <div class="panel">
+                  <div class="panel-header">
+                    <h3 class="panel-title">Konfirmasi Aksi</h3>
+                    <button class="btn-close" aria-label="Tutup">×</button>
+                  </div>
+                  <div class="panel-body">
+                    <p>Apakah Anda yakin ingin melanjutkan? Aksi ini tidak dapat diurungkan.</p>
+                  </div>
+                  <div class="panel-footer d-flex justify-content-between">
+                    <button class="btn">Batal</button>
+                    <button class="btn btn--primary btn--filled">
+                      Ya, Lanjutkan
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr class="form-divider my-5" />
+
+              <!-- Tampilan Statis 2: Modal Besar -->
+              <h3 class="fs-4 mt-4 mb-2">2. Dialog Besar (Large)</h3>
+              <div class="modal-dialog modal-dialog--lg">
+                <div class="panel">
+                  <div class="panel-header">
+                    <h3 class="panel-title">Detail Informasi Produk</h3>
+                    <button class="btn-close" aria-label="Tutup">×</button>
+                  </div>
+                  <div class="panel-body">
+                    <p>Gunakan <code>.modal-dialog--lg</code> untuk konten yang lebih lebar, seperti menampilkan detail
+                      data atau
+                      gambar yang lebih besar.</p>
+                    <img src="https://placehold.co/800x200" alt="Placeholder" style="width: 100%; margin-top: 1rem" />
+                  </div>
+                </div>
+              </div>
+              <hr class="form-divider my-5" />
+
+              <!-- Tampilan Statis 3: Modal Scrollable -->
+              <h3 class="fs-4 mt-4 mb-2">3. Dialog Scrollable</h3>
+              <div class="modal-dialog">
+                <div class="panel">
+                  <div class="panel-header">
+                    <h3 class="panel-title">Syarat dan Ketentuan</h3>
+                    <button class="btn-close" aria-label="Tutup">×</button>
+                  </div>
+                  <div class="panel-body modal-body--scrollable" style="max-height: 250px;">
+                    <!-- Menambahkan max-height agar tidak terlalu panjang di halaman statis -->
+                    <p>Ini adalah contoh konten yang sangat panjang. Dengan kelas <code>.modal-body--scrollable</code>,
+                      hanya area
+                      ini yang akan memiliki scrollbar, bukan seluruh halaman.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus
+                      tortor,
+                      dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+                      ligula
+                      massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim
+                      est
+                      eleifend mi, non fermentum diam nisl sit amet erat.</p>
+                    <p>Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque
+                      congue. Ut in
+                      risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in
+                      pede.
+                      Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante
+                      ipsum primis
+                      in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh.</p>
+                  </div>
+                  <div class="panel-footer">
+                    <button class="btn btn-block">Saya Mengerti dan Setuju</button>
+                  </div>
+                </div>
+              </div>
+              <hr class="form-divider my-5" />
+
+              <!-- Tampilan Statis 4: Modal dengan Form -->
+              <h3 class="fs-4 mt-4 mb-2">4. Dialog dengan Form</h3>
+              <div class="modal-dialog modal-dialog--sm">
+                <div class="panel">
+                  <div class="panel-header">
+                    <h3 class="panel-title">USER LOGIN</h3>
+                    <button class="btn-close" aria-label="Tutup">×</button>
+                  </div>
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label for="modal-username-static" class="form-label">Username:</label>
+                      <input type="text" id="modal-username-static" class="form-control" placeholder="user_id" />
+                    </div>
+                    <div class="form-group">
+                      <label for="modal-password-static" class="form-label">Password:</label>
+                      <input type="password" id="modal-password-static" class="form-control" placeholder="********" />
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <button class="btn btn-block">LOGIN</button>
+                  </div>
+                </div>
+              </div>
+              <hr class="form-divider my-5" />
+
+              <!-- Tampilan Statis 5: Notifikasi dari Atas -->
+              <h3 class="fs-4 mt-4 mb-2">5. Notifikasi dari Atas</h3>
+              <div class="modal-dialog modal-dialog--sm">
+                <div class="panel">
+                  <div class="panel-body d-flex justify-content-between align-items-center">
+                    <span>Pembaruan sistem akan dilakukan malam ini.</span>
+                    <button class="btn">OK</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
   </div>
   <!-- Akhir dari .layout-wrapper -->
 
   <!-- ======================================================= -->
-  <!-- KOLEKSI MODAL (BAGIAN INI TIDAK DIUBAH) -->
+  <!-- KOLEKSI MODAL INTERAKTIF (BAGIAN INI TETAP ADA UNTUK FUNGSI KLIK) -->
   <!-- ======================================================= -->
 
   <!-- 1. Modal Standar -->

@@ -113,8 +113,8 @@
 }
 
 html {
-  font-size: 16px;
-  /* Ukuran dasar modern */
+  font-size: 13.4px;
+  /* 90% dari 16px untuk efek zoom 90% */
 }
 
 body {
@@ -2148,4 +2148,26 @@ textarea.form-control {
 .form-check-label::before,
 .form-check-input+.form-check-label::after {
   display: none;
+}
+
+/* ==========================================================================
+   Layout Halaman Login
+   ========================================================================== */
+.login-page {
+  display: flex;
+  align-items: center;
+  /* Pusatkan secara vertikal */
+  justify-content: center;
+  /* Pusatkan secara horizontal */
+  min-height: 100vh;
+  /* Pastikan body mengisi seluruh tinggi layar */
+  background-color: var(--brut-background-secondary);
+  /* Gunakan warna latar belakang sekunder */
+  padding: 1rem;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  /* Lebar maksimal form login */
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrutalistCSS - Component Showcase</title>
+  <title>TemplateKita - Component Showcase</title>
   <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -209,7 +209,19 @@
                 <input type="text" class="form-control" placeholder="domain.com" />
               </div>
             </div>
+            <!-- Form Password dengan Tombol Show/Hide -->
+            <hr class="form-divider" />
+            <div class="form-group">
+              <label for="password-input" class="form-label">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" placeholder="Masukkan password..." id="password-input" />
+                <button class="btn btn--icon" type="button" id="togglePasswordBtn" aria-label="Tampilkan password">
+                  <i data-lucide="eye"></i>
+                </button>
+              </div>
+            </div>
           </div>
+
         </section>
 
         <!-- 3. Selection Controls -->
