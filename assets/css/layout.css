@@ -1,0 +1,219 @@
+/* layout.css */
+
+/* ---------------------------------- */
+/* #SECTION 3: Layout (Grid & Container)  */
+/* ---------------------------------- */
+
+.container {
+  width: 100%;
+  /* padding: 0 1rem; */
+  /* Padding modern */
+  margin: 0 auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 11400px;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 1.5rem;
+  /* Padding modern */
+  margin: 0 auto;
+}
+
+.row {
+  display: grid;
+  /* Setiap kolom minimal 320px, jika ada ruang lebih, akan membesar. */
+  /* Jika tidak muat, akan pindah ke baris baru. */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  /* Jarak yang lebih konsisten */
+}
+
+.col,
+[class*="col-"] {
+  width: 100%;
+  padding: 0 15px;
+  /* Dipertahankan dari asli */
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.col-1 {
+  flex: 0 0 8.33%;
+  max-width: 8.33%;
+}
+
+.col-2 {
+  flex: 0 0 16.66%;
+  max-width: 16.66%;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+}
+
+.col-5 {
+  flex: 0 0 41.66%;
+  max-width: 41.66%;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 58.33%;
+  max-width: 58.33%;
+}
+
+.col-8 {
+  flex: 0 0 66.66%;
+  max-width: 66.66%;
+}
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 83.33%;
+  max-width: 83.33%;
+}
+
+.col-11 {
+  flex: 0 0 91.66%;
+  max-width: 91.66%;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/* --- Layout Sidebar --- */
+.layout-wrapper {
+  display: flex;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: var(--surface-bg);
+  border-right: var(--border-width) solid var(--border-color);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.main-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 20px;
+}
+
+/* Tombol untuk membuka sidebar di mobile */
+.sidebar-open-btn {
+  background-color: var(--surface-bg);
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 101;
+  display: none;
+  border-radius: 8px;
+}
+
+/* Style Responsif untuk Sidebar */
+@media (max-width: 992px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar-open-btn {
+    display: flex;
+  }
+}
+
+/* Wrapper Responsif untuk Tabel */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 8px;
+  /* Sudut melengkung */
+}
+
+.table-responsive > .data-table {
+  border: none;
+}
+
+/* ==========================================================================
+   Layout Halaman Login
+   ========================================================================== */
+.login-page {
+  display: flex;
+  align-items: center;
+  /* Pusatkan secara vertikal */
+  justify-content: center;
+  /* Pusatkan secara horizontal */
+  min-height: 100vh;
+  /* Pastikan body mengisi seluruh tinggi layar */
+  background-color: var(--brut-background-secondary);
+  /* Gunakan warna latar belakang sekunder */
+  padding: 1rem;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  /* Lebar maksimal form login */
+}

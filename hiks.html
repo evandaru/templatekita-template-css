@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notification ala Radix UI</title>
+    <style>
+        /* 1. Pengaturan Dasar dan Variabel CSS (Inspirasi Radix) */
+        :root {
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            
+            /* Warna untuk Light Mode (Default) */
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(0, 0%, 3.9%);
+            --card: hsl(0, 0%, 100%);
+            --card-foreground: hsl(0, 0%, 3.9%);
+            --border: hsl(0, 0%, 89.8%);
+            --radius: 0.5rem; /* 8px */
+
+            /* Variabel khusus Toast */
+            --toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Opsi untuk Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: hsl(0, 0%, 3.9%);
+                --foreground: hsl(0, 0%, 98%);
+                --card: hsl(0, 0%, 3.9%);
+                --card-foreground: hsl(0, 0%, 98%);
+                --border: hsl(0, 0%, 14.9%);
+            }
+        }
+
+        /* 2. Styling Body dan Kontrol */
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--background);
+            color: var(--foreground);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .show-toast-button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: var(--foreground);
+            color: var(--background);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .show-toast-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* 3. Styling Toast Container */
+        .toast-container {
+            position: fixed;
+            bottom: 1.5rem; /* Jarak dari bawah */
+            right: 1.5rem;  /* Jarak dari kanan */
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem; /* Jarak antar toast */
+            z-index: 9999;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 4. Styling Toast Individual */
+        .toast {
+            display: grid;
+            grid-template-areas:
+                "title close"
+                "description close";
+            grid-template-columns: 1fr auto;
+            gap: 0.25rem 1rem;
+            align-items: center;
+            width: 350px;
+            max-width: calc(100vw - 3rem);
+            padding: 1rem;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--toast-shadow);
+            
+            /* Animasi masuk dan keluar */
+            animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1), fadeOut 0.3s ease-out forwards;
+            animation-delay: 0s, var(--toast-duration, 5s);
+        }
+
+        .toast-title {
+            grid-area: title;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.2;
+        }
+
+        .toast-description {
+            grid-area: description;
+            font-size: 0.875rem;
+            color: hsl(0, 0%, 45%);
+            line-height: 1.4;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .toast-description {
+                color: hsl(0, 0%, 63%);
+            }
+        }
+        
+        .toast-close-button {
+            grid-area: close;
+            background: transparent;
+            border: none;
+            padding: 0.25rem;
+            cursor: pointer;
+            border-radius: 99px;
+            color: var(--foreground);
+            opacity: 0.6;
+            transition: opacity 0.2s, background-color 0.2s;
+        }
+        
+        .toast-close-button:hover {
+            opacity: 1;
+            background-color: hsla(0, 0%, 50%, 0.1);
+        }
+
+        /* 5. Keyframes untuk Animasi */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(10px) scale(0.95);
+            }
+        }
+        
+        /* Kelas utilitas untuk memicu fade-out secara manual */
+        .toast.closing {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="show-toast-button" id="showToastBtn">Tampilkan Toast</button>
+
+    <ul class="toast-container" id="toastContainer">
+        </ul>
+
+    <script>
+        const showToastBtn = document.getElementById('showToastBtn');
+        const toastContainer = document.getElementById('toastContainer');
+
+        // Data sampel untuk toast
+        const toastMessages = [
+            {
+                title: "Acara Ditambahkan",
+                description: "Rapat tim telah dijadwalkan pada hari Jumat pukul 10:00."
+            },
+            {
+                title: "Pembaruan Berhasil",
+                description: "Profil Anda telah berhasil diperbarui."
+            },
+            {
+                title: "Notifikasi Baru",
+                description: "Anda memiliki 3 pesan yang belum dibaca."
+            },
+            {
+                title: "Gagal Mengunggah",
+                description: "Ukuran file terlalu besar. Maksimum 5MB."
+            }
+        ];
+
+        function createToast(title, description, duration = 5000) {
+            // 1. Buat elemen toast
+            const toastElement = document.createElement('li');
+            toastElement.className = 'toast';
+            // Atur durasi auto-close melalui CSS variable
+            toastElement.style.setProperty('--toast-duration', `${duration / 1000}s`);
+
+            // 2. Isi konten toast
+            toastElement.innerHTML = `
+                <div class="toast-content">
+                    <p class="toast-title">${title}</p>
+                    <p class="toast-description">${description}</p>
+                </div>
+                <button class="toast-close-button" aria-label="Tutup">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            `;
+
+            // 3. Tambahkan ke container
+            toastContainer.appendChild(toastElement);
+
+            const closeButton = toastElement.querySelector('.toast-close-button');
+            
+            // Fungsi untuk menghapus toast
+            const removeToast = () => {
+                // Tambahkan kelas untuk memicu animasi keluar
+                toastElement.classList.add('closing');
+                
+                // Hapus elemen dari DOM setelah animasi selesai
+                toastElement.addEventListener('animationend', () => {
+                    if (toastElement.parentElement) {
+                       toastElement.remove();
+                    }
+                }, { once: true });
+            };
+
+            // 4. Event listener untuk tombol close
+            closeButton.addEventListener('click', removeToast);
+            
+            // 5. Secara otomatis mulai timer untuk menghapus toast
+            // Kita tidak perlu setTimeout untuk menghapus, karena animasi CSS
+            // dengan delay sudah menanganinya. Kita hanya perlu listener
+            // `animationend` untuk membersihkan elemen dari DOM.
+            toastElement.addEventListener('animationend', (event) => {
+                // Pastikan ini adalah akhir dari animasi `fadeOut`
+                if (event.animationName === 'fadeOut' && toastElement.parentElement) {
+                    toastElement.remove();
+                }
+            }, { once: true });
+        }
+
+        // Event listener untuk tombol utama
+        showToastBtn.addEventListener('click', () => {
+            const randomMessage = toastMessages[Math.floor(Math.random() * toastMessages.length)];
+            createToast(randomMessage.title, randomMessage.description);
+        });
+    </script>
+</body>
+</html>

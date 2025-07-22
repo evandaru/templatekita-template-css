@@ -1,270 +1,305 @@
 <!DOCTYPE html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Judul dari file asli dipertahankan -->
+    <title>TemplateKita - Component Showcase</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Judul dari file asli dipertahankan -->
-  <title>TemplateKita - Component Showcase</title>
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 1. Impor Font dari file asli -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- 1. Impor Font dari file asli -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <!-- 2. Hubungkan CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-  <!-- 2. Hubungkan CSS -->
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
+  <body>
+    <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
+    <button
+      class="btn btn--icon sidebar-open-btn"
+      data-toggle-target="#mainSidebar"
+      data-toggle-class="is-open"
+      aria-label="Buka Menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
 
-<body>
-  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
-  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
-    aria-label="Buka Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
+    <div class="layout-wrapper">
+      <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
+      <aside class="sidebar" id="mainSidebar">
+        <div class="sidebar-header">
+          <h3 class="fs-4">Navigasi</h3>
+        </div>
 
-  <div class="layout-wrapper">
-    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
-    <aside class="sidebar" id="mainSidebar">
-      <div class="sidebar-header">
-        <h3 class="fs-4">Navigasi</h3>
-      </div>
-
-      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
-      <nav class="sidebar-nav">
-        <!-- Link Level Atas -->
-        <a href="index.html" class="active"> <!-- Halaman ini aktif -->
-          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
-          Components Overview
-        </a>
-
-        <!-- Grup Collapsible 1: Basic Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="layers" class="sidebar-nav__icon"></i>
-              Basic Components
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+        <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
+        <nav class="sidebar-nav">
+          <!-- Link Level Atas -->
+          <a href="index.html" class="active">
+            <!-- Halaman ini aktif -->
+            <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+            Components Overview
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="card.html">
-              <i data-lucide="box" class="sidebar-nav__icon"></i>
-              Card / Panel
+
+          <!-- Grup Collapsible 1: Basic Components -->
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                Basic Components
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
             </a>
-            <a href="button.html">
-              <i data-lucide="square" class="sidebar-nav__icon"></i>
-              Buttons
+            <div class="sidebar-collapsible__content">
+              <a href="card.html">
+                <i data-lucide="box" class="sidebar-nav__icon"></i>
+                Card / Panel
+              </a>
+              <a href="button.html">
+                <i data-lucide="square" class="sidebar-nav__icon"></i>
+                Buttons
+              </a>
+              <a href="form-elements.html">
+                <i data-lucide="form-input" class="sidebar-nav__icon"></i>
+                Form Elements
+              </a>
+            </div>
+          </div>
+
+          <!-- Grup Collapsible 2: Advanced Components -->
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                Advanced
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
             </a>
-            <a href="form-elements.html">
-              <i data-lucide="form-input" class="sidebar-nav__icon"></i>
-              Form Elements
-            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="dialog.html">
+                <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+                Dialog / Modal
+              </a>
+              <a href="progress-bar.html">
+                <!-- Mengganti ikon ke yang lebih sesuai dari file asli jika perlu, atau gunakan yang baru -->
+                <i
+                  data-lucide="bar-chart-horizontal"
+                  class="sidebar-nav__icon"
+                ></i>
+                Progress Bar
+              </a>
+              <a href="tabel.html">
+                <i data-lucide="table" class="sidebar-nav__icon"></i>
+                Data Tables
+              </a>
+            </div>
+          </div>
+
+          <!-- Link Level Atas Lainnya -->
+          <a href="whats-new.html">
+            <i data-lucide="star" class="sidebar-nav__icon"></i>
+            What's New
+          </a>
+        </nav>
+
+        <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
+        <div class="sidebar-footer">
+          <!-- Tombol Pemicu Menu Pengaturan -->
+          <button id="userSettingsToggle" class="sidebar-user-button">
+            <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+            <span>Pengguna</span>
+            <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+          </button>
+
+          <!-- Menu Pop-up Pengaturan (Awalnya Tersembunyi) -->
+          <div id="userSettingsMenu" class="user-settings-menu">
+            <ul class="user-settings-list">
+              <li>
+                <a href="#">
+                  <i data-lucide="user" class="user-settings-icon"></i>
+                  <span>Profil Saya</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i
+                    data-lucide="sliders-horizontal"
+                    class="user-settings-icon"
+                  ></i>
+                  <span>Pengaturan</span>
+                </a>
+              </li>
+              <li>
+                <hr class="form-divider m-0" />
+              </li>
+              <li class="user-settings-item">
+                <span class="user-settings-label">Mode Malam</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="darkModeToggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </li>
+              <li class="user-settings-item">
+                <div id="themeColorPicker" class="theme-picker">
+                  <!-- Tombol warna akan dibuat oleh JavaScript -->
+                </div>
+              </li>
+              <li>
+                <hr class="form-divider m-0" />
+              </li>
+              <li>
+                <a href="#" class="text-danger">
+                  <i data-lucide="log-out" class="user-settings-icon"></i>
+                  <span>Keluar</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+      </aside>
 
-        <!-- Grup Collapsible 2: Advanced Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
-              Advanced
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
-          </a>
-          <div class="sidebar-collapsible__content">
-            <a href="dialog.html">
-              <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
-              Dialog / Modal
+      <!-- ===== KONTEN UTAMA (KONTEN ASLI INDEX.HTML ANDA) ===== -->
+      <main class="main-content">
+        <div class="container my-5">
+          <header class="main-header mb-5">
+            <h1 class="fs-1 text-glitch-hover">TemplateKita</h1>
+            <p class="fs-5">
+              A no-nonsense, lightweight, and opinionated CSS framework. By
+              Devkita.
+            </p>
+            <p>
+              Select a component below to see examples and usage guidelines.
+            </p>
+          </header>
+
+          <div class="nav-grid">
+            <!-- Card / Panel -->
+            <a href="card.html" class="nav-card">
+              <div class="nav-card__icon">[■]</div>
+              <h3 class="nav-card__title">Card / Panel</h3>
+              <p class="nav-card__desc">
+                The basic container for content blocks.
+              </p>
             </a>
-            <a href="progress-bar.html">
-              <!-- Mengganti ikon ke yang lebih sesuai dari file asli jika perlu, atau gunakan yang baru -->
-              <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
-              Progress Bar
+
+            <!-- Buttons -->
+            <a href="button.html" class="nav-card">
+              <div class="nav-card__icon">[BTN]</div>
+              <h3 class="nav-card__title">Buttons</h3>
+              <p class="nav-card__desc">Standard, colored, and icon buttons.</p>
             </a>
-            <a href="tabel.html">
-              <i data-lucide="table" class="sidebar-nav__icon"></i>
-              Data Tables
+
+            <!-- Form Elements -->
+            <a href="form-elements.html" class="nav-card">
+              <div class="nav-card__icon">[/ >_]</div>
+              <h3 class="nav-card__title">Form Elements</h3>
+              <p class="nav-card__desc">
+                Inputs, selects, checkboxes, and toggles.
+              </p>
+            </a>
+
+            <!-- Dialog / Modal -->
+            <a href="dialog.html" class="nav-card">
+              <div class="nav-card__icon">[□-□]</div>
+              <h3 class="nav-card__title">Dialog / Modal</h3>
+              <p class="nav-card__desc">Interactive pop-up windows.</p>
+            </a>
+
+            <!-- Progress Bar -->
+            <a href="progress-bar.html" class="nav-card">
+              <div class="nav-card__icon">[■■■□□]</div>
+              <h3 class="nav-card__title">Progress Bar</h3>
+              <p class="nav-card__desc">
+                Visual indicators for loading or steps.
+              </p>
+            </a>
+
+            <!-- Data Tables -->
+            <a href="tabel.html" class="nav-card">
+              <div class="nav-card__icon">[#|==]</div>
+              <h3 class="nav-card__title">Data Tables</h3>
+              <p class="nav-card__desc">Sortable and searchable data grids.</p>
+            </a>
+
+            <!-- What's New -->
+            <a href="whats-new.html" class="nav-card">
+              <div class="nav-card__icon">[★]</div>
+              <h3 class="nav-card__title">What's New</h3>
+              <p class="nav-card__desc">Check out the latest updates.</p>
             </a>
           </div>
+          <!-- Akhir dari .nav-grid -->
         </div>
+      </main>
+    </div>
 
-        <!-- Link Level Atas Lainnya -->
-        <a href="whats-new.html">
-          <i data-lucide="star" class="sidebar-nav__icon"></i>
-          What's New
-        </a>
-      </nav>
-
-      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
-      <div class="sidebar-footer">
-        <!-- Tombol Pemicu Menu Pengaturan -->
-        <button id="userSettingsToggle" class="sidebar-user-button">
-          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
-          <span>Pengguna</span>
-          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
-        </button>
-
-        <!-- Menu Pop-up Pengaturan (Awalnya Tersembunyi) -->
-        <div id="userSettingsMenu" class="user-settings-menu">
-          <ul class="user-settings-list">
-            <li>
-              <a href="#">
-                <i data-lucide="user" class="user-settings-icon"></i>
-                <span>Profil Saya</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i data-lucide="sliders-horizontal" class="user-settings-icon"></i>
-                <span>Pengaturan</span>
-              </a>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li class="user-settings-item">
-              <span class="user-settings-label">Mode Malam</span>
-              <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle" />
-                <span class="toggle-slider"></span>
-              </label>
-            </li>
-            <li class="user-settings-item">
-              <div id="themeColorPicker" class="theme-picker">
-                <!-- Tombol warna akan dibuat oleh JavaScript -->
-              </div>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li>
-              <a href="#" class="text-danger">
-                <i data-lucide="log-out" class="user-settings-icon"></i>
-                <span>Keluar</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ===== KONTEN UTAMA (KONTEN ASLI INDEX.HTML ANDA) ===== -->
-    <main class="main-content">
-      <div class="container my-5">
-        <header class="main-header mb-5">
-          <h1 class="fs-1 text-glitch-hover">TemplateKita</h1>
-          <p class="fs-5">
-            A no-nonsense, lightweight, and opinionated CSS framework. By Devkita.
-          </p>
-          <p>
-            Select a component below to see examples and usage guidelines.
-          </p>
-        </header>
-
-        <div class="nav-grid">
-          <!-- Card / Panel -->
-          <a href="card.html" class="nav-card">
-            <div class="nav-card__icon">[■]</div>
-            <h3 class="nav-card__title">Card / Panel</h3>
-            <p class="nav-card__desc">
-              The basic container for content blocks.
-            </p>
-          </a>
-
-          <!-- Buttons -->
-          <a href="button.html" class="nav-card">
-            <div class="nav-card__icon">[BTN]</div>
-            <h3 class="nav-card__title">Buttons</h3>
-            <p class="nav-card__desc">Standard, colored, and icon buttons.</p>
-          </a>
-
-          <!-- Form Elements -->
-          <a href="form-elements.html" class="nav-card">
-            <div class="nav-card__icon">[/ >_]</div>
-            <h3 class="nav-card__title">Form Elements</h3>
-            <p class="nav-card__desc">
-              Inputs, selects, checkboxes, and toggles.
-            </p>
-          </a>
-
-          <!-- Dialog / Modal -->
-          <a href="dialog.html" class="nav-card">
-            <div class="nav-card__icon">[□-□]</div>
-            <h3 class="nav-card__title">Dialog / Modal</h3>
-            <p class="nav-card__desc">Interactive pop-up windows.</p>
-          </a>
-
-          <!-- Progress Bar -->
-          <a href="progress-bar.html" class="nav-card">
-            <div class="nav-card__icon">[■■■□□]</div>
-            <h3 class="nav-card__title">Progress Bar</h3>
-            <p class="nav-card__desc">
-              Visual indicators for loading or steps.
-            </p>
-          </a>
-
-          <!-- Data Tables -->
-          <a href="tabel.html" class="nav-card">
-            <div class="nav-card__icon">[#|==]</div>
-            <h3 class="nav-card__title">Data Tables</h3>
-            <p class="nav-card__desc">Sortable and searchable data grids.</p>
-          </a>
-
-          <!-- What's New -->
-          <a href="whats-new.html" class="nav-card">
-            <div class="nav-card__icon">[★]</div>
-            <h3 class="nav-card__title">What's New</h3>
-            <p class="nav-card__desc">Check out the latest updates.</p>
-          </a>
-        </div>
-        <!-- Akhir dari .nav-grid -->
-      </div>
-    </main>
-  </div>
-
-  <!-- ======================================================= -->
-  <!-- Elemen Modal (Dipertahankan dari file asli) -->
-  <!-- ======================================================= -->
-  <div class="modal" id="demoModal">
-    <div class="modal-dialog">
-      <div class="panel">
-        <div class="panel-header d-flex justify-content-between align-items-center">
-          <h3 class="panel-title">Konfirmasi Aksi</h3>
-          <button data-modal-close style="
+    <!-- ======================================================= -->
+    <!-- Elemen Modal (Dipertahankan dari file asli) -->
+    <!-- ======================================================= -->
+    <div class="modal" id="demoModal">
+      <div class="modal-dialog">
+        <div class="panel">
+          <div
+            class="panel-header d-flex justify-content-between align-items-center"
+          >
+            <h3 class="panel-title">Konfirmasi Aksi</h3>
+            <button
+              data-modal-close
+              style="
                 background: none;
                 border: none;
                 font-size: 1.5rem;
                 cursor: pointer;
-              ">
-            ×
-          </button>
-        </div>
-        <div class="panel-body">
-          <p>
-            Apakah Anda yakin ingin melanjutkan? Aksi ini tidak dapat
-            diurungkan.
-          </p>
-          <div class="text-right mt-4">
-            <button class="btn" data-modal-close>Batal</button>
-            <button class="btn"
-              onclick="createBrutalistAlert('Aksi Dikonfirmasi!', 'info'); document.querySelector('#demoModal').classList.remove('is-open');">
-              Ya, Lanjutkan
+              "
+            >
+              ×
             </button>
+          </div>
+          <div class="panel-body">
+            <p>
+              Apakah Anda yakin ingin melanjutkan? Aksi ini tidak dapat
+              diurungkan.
+            </p>
+            <div class="text-right mt-4">
+              <button class="btn" data-modal-close>Batal</button>
+              <button
+                class="btn"
+                onclick="createBrutalistAlert('Aksi Dikonfirmasi!', 'info'); document.querySelector('#demoModal').classList.remove('is-open');"
+              >
+                Ya, Lanjutkan
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- 3. Hubungkan JavaScript -->
-  <script src="assets/script.js"></script>
-</body>
-
+    <!-- 3. Hubungkan JavaScript -->
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>

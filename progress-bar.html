@@ -1,232 +1,351 @@
 <!DOCTYPE html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemplateKita - Component Showcase</title>
+    <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TemplateKita - Component Showcase</title>
-  <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 1. Impor Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- 1. Impor Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <!-- 2. Hubungkan CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-  <!-- 2. Hubungkan CSS -->
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
+  <body>
+    <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
+    <button
+      class="btn btn--icon sidebar-open-btn"
+      data-toggle-target="#mainSidebar"
+      data-toggle-class="is-open"
+      aria-label="Buka Menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
 
-<body>
-  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
-  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
-    aria-label="Buka Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
-
-  <div class="layout-wrapper">
-    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
-    <aside class="sidebar" id="mainSidebar">
-      <div class="sidebar-header">
-        <h3 class="fs-4">Navigasi</h3>
-      </div>
-
-      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
-      <nav class="sidebar-nav">
-        <a href="index.html">
-          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
-          Components Overview
-        </a>
-
-        <!-- Grup Collapsible 1: Basic Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="layers" class="sidebar-nav__icon"></i>
-              Basic Components
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
-          </a>
-          <div class="sidebar-collapsible__content">
-            <a href="card.html"><i data-lucide="box" class="sidebar-nav__icon"></i> Card / Panel</a>
-            <a href="button.html"><i data-lucide="square" class="sidebar-nav__icon"></i> Buttons</a>
-            <a href="form-elements.html"><i data-lucide="form-input" class="sidebar-nav__icon"></i> Form Elements</a>
-          </div>
+    <div class="layout-wrapper">
+      <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
+      <aside class="sidebar" id="mainSidebar">
+        <div class="sidebar-header">
+          <h3 class="fs-4">Navigasi</h3>
         </div>
 
-        <!-- Grup Collapsible 2: Advanced Components (dibuat terbuka karena item di dalamnya aktif) -->
-        <div class="sidebar-collapsible is-open">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
-              Advanced
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+        <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
+        <nav class="sidebar-nav">
+          <a href="index.html">
+            <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+            Components Overview
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="dialog.html"><i data-lucide="panel-top" class="sidebar-nav__icon"></i> Dialog / Modal</a>
-            <a href="progress-bar.html" class="active"> <!-- Halaman ini aktif -->
-              <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
-              Progress Bar
+
+          <!-- Grup Collapsible 1: Basic Components -->
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                Basic Components
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
             </a>
-            <a href="tabel.html"><i data-lucide="table" class="sidebar-nav__icon"></i> Data Tables</a>
+            <div class="sidebar-collapsible__content">
+              <a href="card.html"
+                ><i data-lucide="box" class="sidebar-nav__icon"></i> Card /
+                Panel</a
+              >
+              <a href="button.html"
+                ><i data-lucide="square" class="sidebar-nav__icon"></i>
+                Buttons</a
+              >
+              <a href="form-elements.html"
+                ><i data-lucide="form-input" class="sidebar-nav__icon"></i> Form
+                Elements</a
+              >
+            </div>
+          </div>
+
+          <!-- Grup Collapsible 2: Advanced Components (dibuat terbuka karena item di dalamnya aktif) -->
+          <div class="sidebar-collapsible is-open">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                Advanced
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
+            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="dialog.html"
+                ><i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+                Dialog / Modal</a
+              >
+              <a href="progress-bar.html" class="active">
+                <!-- Halaman ini aktif -->
+                <i
+                  data-lucide="bar-chart-horizontal"
+                  class="sidebar-nav__icon"
+                ></i>
+                Progress Bar
+              </a>
+              <a href="tabel.html"
+                ><i data-lucide="table" class="sidebar-nav__icon"></i> Data
+                Tables</a
+              >
+            </div>
+          </div>
+
+          <a href="whats-new.html">
+            <i data-lucide="star" class="sidebar-nav__icon"></i>
+            What's New
+          </a>
+        </nav>
+
+        <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
+        <div class="sidebar-footer">
+          <button id="userSettingsToggle" class="sidebar-user-button">
+            <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+            <span>Pengguna</span>
+            <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+          </button>
+
+          <div id="userSettingsMenu" class="user-settings-menu">
+            <ul class="user-settings-list">
+              <li>
+                <a href="#"
+                  ><i data-lucide="user" class="user-settings-icon"></i
+                  ><span>Profil Saya</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i
+                    data-lucide="sliders-horizontal"
+                    class="user-settings-icon"
+                  ></i
+                  ><span>Pengaturan</span></a
+                >
+              </li>
+              <li>
+                <hr class="form-divider m-0" />
+              </li>
+              <li class="user-settings-item">
+                <span class="user-settings-label">Mode Malam</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="darkModeToggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </li>
+              <li class="user-settings-item">
+                <div id="themeColorPicker" class="theme-picker"></div>
+              </li>
+              <li>
+                <hr class="form-divider m-0" />
+              </li>
+              <li>
+                <a href="#" class="text-danger"
+                  ><i data-lucide="log-out" class="user-settings-icon"></i
+                  ><span>Keluar</span></a
+                >
+              </li>
+            </ul>
           </div>
         </div>
+      </aside>
 
-        <a href="whats-new.html">
-          <i data-lucide="star" class="sidebar-nav__icon"></i>
-          What's New
-        </a>
-      </nav>
-
-      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
-      <div class="sidebar-footer">
-        <button id="userSettingsToggle" class="sidebar-user-button">
-          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
-          <span>Pengguna</span>
-          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
-        </button>
-
-        <div id="userSettingsMenu" class="user-settings-menu">
-          <ul class="user-settings-list">
-            <li><a href="#"><i data-lucide="user" class="user-settings-icon"></i><span>Profil Saya</span></a></li>
-            <li><a href="#"><i data-lucide="sliders-horizontal"
-                  class="user-settings-icon"></i><span>Pengaturan</span></a></li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li class="user-settings-item">
-              <span class="user-settings-label">Mode Malam</span>
-              <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle" />
-                <span class="toggle-slider"></span>
-              </label>
-            </li>
-            <li class="user-settings-item">
-              <div id="themeColorPicker" class="theme-picker"></div>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li><a href="#" class="text-danger"><i data-lucide="log-out"
-                  class="user-settings-icon"></i><span>Keluar</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
-    <main class="main-content">
-      <div class="container my-5">
-        <header class="mb-5">
-          <h1 class="fs-2">Progress Bar Showcase</h1>
-          <p>
-            Berbagai cara untuk menampilkan kemajuan dari sebuah proses atau
-            operasi.
-          </p>
-        </header>
-
-        <!-- 1. Basic & Colored -->
-        <section class="panel mb-5" aria-labelledby="pb-basic-title">
-          <div class="panel-header">
-            <h4 class="panel-title" id="pb-basic-title">
-              1. Basic & Colored Bars
-            </h4>
-          </div>
-          <div class="panel-body" style="flex-direction: column; align-items: stretch">
-            <label class="form-label">Default (75%)</label>
-            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-              <div class="progress-bar-inner" style="width: 75%">75%</div>
-            </div>
-
-            <label class="form-label mt-4">Success (100%)</label>
-            <div class="progress-bar progress-bar--success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-              aria-valuemax="100">
-              <div class="progress-bar-inner" style="width: 100%">COMPLETE</div>
-            </div>
-
-            <label class="form-label mt-4">Warning (50%)</label>
-            <div class="progress-bar progress-bar--warning" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-              aria-valuemax="100">
-              <div class="progress-bar-inner" style="width: 50%">50%</div>
-            </div>
-
-            <label class="form-label mt-4">Danger (25%)</label>
-            <div class="progress-bar progress-bar--danger" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-              aria-valuemax="100">
-              <div class="progress-bar-inner" style="width: 25%">25%</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 2. Striped & Animated -->
-        <section class="panel mb-5" aria-labelledby="pb-animated-title">
-          <div class="panel-header">
-            <h4 class="panel-title" id="pb-animated-title">
-              2. Striped & Animated Bars
-            </h4>
-          </div>
-          <div class="panel-body" style="flex-direction: column; align-items: stretch">
-            <p>Gunakan <code>.progress-bar--striped</code> dan <code>.progress-bar--animated</code> untuk efek visual.
+      <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
+      <main class="main-content">
+        <div class="container my-5">
+          <header class="mb-5">
+            <h1 class="fs-2">Progress Bar Showcase</h1>
+            <p>
+              Berbagai cara untuk menampilkan kemajuan dari sebuah proses atau
+              operasi.
             </p>
-            <div id="animated-progress-group">
-              <label class="form-label mt-3">Striped (60%)</label>
-              <div class="progress-bar progress-bar--striped" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                aria-valuemax="100">
-                <div class="progress-bar-inner" data-value="60" style="width: 10%">Processing...</div>
+          </header>
+
+          <!-- 1. Basic & Colored -->
+          <section class="panel mb-5" aria-labelledby="pb-basic-title">
+            <div class="panel-header">
+              <h4 class="panel-title" id="pb-basic-title">
+                1. Basic & Colored Bars
+              </h4>
+            </div>
+            <div
+              class="panel-body"
+              style="flex-direction: column; align-items: stretch"
+            >
+              <label class="form-label">Default (75%)</label>
+              <div
+                class="progress-bar"
+                role="progressbar"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div class="progress-bar-inner" style="width: 75%">75%</div>
               </div>
 
-              <label class="form-label mt-4">Animated Striped (80%)</label>
-              <div class="progress-bar progress-bar--striped progress-bar--animated" role="progressbar"
-                aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar-inner" data-value="80" style="width: 10%">Uploading...</div>
+              <label class="form-label mt-4">Success (100%)</label>
+              <div
+                class="progress-bar progress-bar--success"
+                role="progressbar"
+                aria-valuenow="100"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div class="progress-bar-inner" style="width: 100%">
+                  COMPLETE
+                </div>
+              </div>
+
+              <label class="form-label mt-4">Warning (50%)</label>
+              <div
+                class="progress-bar progress-bar--warning"
+                role="progressbar"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div class="progress-bar-inner" style="width: 50%">50%</div>
+              </div>
+
+              <label class="form-label mt-4">Danger (25%)</label>
+              <div
+                class="progress-bar progress-bar--danger"
+                role="progressbar"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                <div class="progress-bar-inner" style="width: 25%">25%</div>
               </div>
             </div>
-            <button class="btn mt-4" id="animate-btn" style="align-self: flex-start">
-              Animate Progress
-            </button>
-          </div>
-        </section>
+          </section>
 
-        <!-- 3. Sizing & Indeterminate -->
-        <section class="panel mb-5" aria-labelledby="pb-sizing-title">
-          <div class="panel-header">
-            <h4 class="panel-title" id="pb-sizing-title">
-              3. Sizing & Indeterminate State
-            </h4>
-          </div>
-          <div class="panel-body" style="flex-direction: column; align-items: stretch">
-            <label class="form-label">Small (<code>.progress-bar--sm</code>)</label>
-            <div class="progress-bar progress-bar--sm">
-              <div class="progress-bar-inner" style="width: 40%"></div>
+          <!-- 2. Striped & Animated -->
+          <section class="panel mb-5" aria-labelledby="pb-animated-title">
+            <div class="panel-header">
+              <h4 class="panel-title" id="pb-animated-title">
+                2. Striped & Animated Bars
+              </h4>
             </div>
+            <div
+              class="panel-body"
+              style="flex-direction: column; align-items: stretch"
+            >
+              <p>
+                Gunakan <code>.progress-bar--striped</code> dan
+                <code>.progress-bar--animated</code> untuk efek visual.
+              </p>
+              <div id="animated-progress-group">
+                <label class="form-label mt-3">Striped (60%)</label>
+                <div
+                  class="progress-bar progress-bar--striped"
+                  role="progressbar"
+                  aria-valuenow="60"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div
+                    class="progress-bar-inner"
+                    data-value="60"
+                    style="width: 10%"
+                  >
+                    Processing...
+                  </div>
+                </div>
 
-            <label class="form-label mt-4">Default</label>
-            <div class="progress-bar">
-              <div class="progress-bar-inner" style="width: 60%"></div>
+                <label class="form-label mt-4">Animated Striped (80%)</label>
+                <div
+                  class="progress-bar progress-bar--striped progress-bar--animated"
+                  role="progressbar"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div
+                    class="progress-bar-inner"
+                    data-value="80"
+                    style="width: 10%"
+                  >
+                    Uploading...
+                  </div>
+                </div>
+              </div>
+              <button
+                class="btn mt-4"
+                id="animate-btn"
+                style="align-self: flex-start"
+              >
+                Animate Progress
+              </button>
             </div>
+          </section>
 
-            <label class="form-label mt-4">Large (<code>.progress-bar--lg</code>)</label>
-            <div class="progress-bar progress-bar--lg">
-              <div class="progress-bar-inner" style="width: 80%"></div>
+          <!-- 3. Sizing & Indeterminate -->
+          <section class="panel mb-5" aria-labelledby="pb-sizing-title">
+            <div class="panel-header">
+              <h4 class="panel-title" id="pb-sizing-title">
+                3. Sizing & Indeterminate State
+              </h4>
             </div>
+            <div
+              class="panel-body"
+              style="flex-direction: column; align-items: stretch"
+            >
+              <label class="form-label"
+                >Small (<code>.progress-bar--sm</code>)</label
+              >
+              <div class="progress-bar progress-bar--sm">
+                <div class="progress-bar-inner" style="width: 40%"></div>
+              </div>
 
-            <label class="form-label mt-4">Indeterminate (Loading...)</label>
-            <div class="progress-bar progress-bar--indeterminate">
-              <div class="progress-bar-inner"></div>
+              <label class="form-label mt-4">Default</label>
+              <div class="progress-bar">
+                <div class="progress-bar-inner" style="width: 60%"></div>
+              </div>
+
+              <label class="form-label mt-4"
+                >Large (<code>.progress-bar--lg</code>)</label
+              >
+              <div class="progress-bar progress-bar--lg">
+                <div class="progress-bar-inner" style="width: 80%"></div>
+              </div>
+
+              <label class="form-label mt-4">Indeterminate (Loading...)</label>
+              <div class="progress-bar progress-bar--indeterminate">
+                <div class="progress-bar-inner"></div>
+              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </main>
-  </div>
+          </section>
+        </div>
+      </main>
+    </div>
 
-  <script src="assets/script.js"></script>
-</body>
-
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>

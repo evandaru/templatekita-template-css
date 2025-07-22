@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemplateKita - Component Showcase</title>
+    <!-- [DITAMBAHKAN] Script untuk ikon Lucide (meski toast baru tidak pakai, komponen lain masih pakai) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- 1. Impor Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <!-- [DITAMBAHKAN] Font Inter untuk gaya Radix UI -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 2. Hubungkan CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+  <body>
+    <!-- Tombol sidebar, layout, dll. tetap sama -->
+
+    <div class="">
+      <main class="">
+        <div class="">
+          <!-- ... Konten header dan panel modal tetap sama ... -->
+
+          <!-- [DIUBAH TOTAL] Bagian TOAST -->
+
+          <section class="panel mt-5">
+            <div class="panel-header">
+              <h4 class="panel-title">>> Toast Notification (Gaya Radix UI)</h4>
+            </div>
+            <div class="panel-body">
+              <p class="mb-4">
+                Klik tombol di bawah ini untuk memunculkan notifikasi toast
+                dengan gaya modern dan animasi yang halus.
+              </p>
+              <!-- [DIUBAH] Menggunakan satu tombol pemicu baru -->
+              <div class="mt-4">
+                <button class="show-toast-button" id="showToastBtn">
+                  Tampilkan Toast
+                </button>
+              </div>
+            </div>
+          </section>
+          <!-- ... Konten panel statis modal tetap sama ... -->
+        </div>
+      </main>
+    </div>
+    <!-- Akhir dari .layout-wrapper -->
+
+    <!-- ... KOLEKSI MODAL INTERAKTIF tetap sama ... -->
+
+    <!-- [DIUBAH] Container untuk Toast baru, sesuai dengan contoh Radix UI -->
+    <ul class="toast-container" id="toastContainer"></ul>
+
+    <!-- [DIUBAH] Menggunakan main.js sebagai module entry point -->
+    assets/js/script.js
+  </body>
+</html>

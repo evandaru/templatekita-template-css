@@ -1,170 +1,227 @@
 <!DOCTYPE html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemplateKita - Component Showcase</title>
+    <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TemplateKita - Component Showcase</title>
-  <!-- [DITAMBAHKAN] Script untuk ikon Lucide -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 1. Impor Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- 1. Impor Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <!-- 2. Hubungkan CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-  <!-- 2. Hubungkan CSS -->
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
+  <body>
+    <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
+    <button
+      class="btn btn--icon sidebar-open-btn"
+      data-toggle-target="#mainSidebar"
+      data-toggle-class="is-open"
+      aria-label="Buka Menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
 
-<body>
-  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
-  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
-    aria-label="Buka Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
+    <div class="layout-wrapper">
+      <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
+      <aside class="sidebar" id="mainSidebar">
+        <div class="sidebar-header">
+          <h3 class="fs-4">Navigasi</h3>
+        </div>
 
-  <div class="layout-wrapper">
-    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
-    <aside class="sidebar" id="mainSidebar">
-      <div class="sidebar-header">
-        <h3 class="fs-4">Navigasi</h3>
-      </div>
-
-      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
-      <nav class="sidebar-nav">
-        <a href="index.html">
-          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
-          Components Overview
-        </a>
-
-        <!-- Grup Collapsible 1: Basic Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="layers" class="sidebar-nav__icon"></i>
-              Basic Components
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+        <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
+        <nav class="sidebar-nav">
+          <a href="index.html">
+            <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+            Components Overview
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="card.html"><i data-lucide="box" class="sidebar-nav__icon"></i> Card / Panel</a>
-            <a href="button.html"><i data-lucide="square" class="sidebar-nav__icon"></i> Buttons</a>
-            <a href="form-elements.html"><i data-lucide="form-input" class="sidebar-nav__icon"></i> Form Elements</a>
-          </div>
-        </div>
 
-        <!-- Grup Collapsible 2: Advanced Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
-              Advanced
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          <!-- Grup Collapsible 1: Basic Components -->
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                Basic Components
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
+            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="card.html"
+                ><i data-lucide="box" class="sidebar-nav__icon"></i> Card /
+                Panel</a
+              >
+              <a href="button.html"
+                ><i data-lucide="square" class="sidebar-nav__icon"></i>
+                Buttons</a
+              >
+              <a href="form-elements.html"
+                ><i data-lucide="form-input" class="sidebar-nav__icon"></i> Form
+                Elements</a
+              >
+            </div>
+          </div>
+
+          <!-- Grup Collapsible 2: Advanced Components -->
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                Advanced
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
+            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="dialog.html"
+                ><i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+                Dialog / Modal</a
+              >
+              <a href="progress-bar.html"
+                ><i
+                  data-lucide="bar-chart-horizontal"
+                  class="sidebar-nav__icon"
+                ></i>
+                Progress Bar</a
+              >
+              <a href="tabel.html"
+                ><i data-lucide="table" class="sidebar-nav__icon"></i> Data
+                Tables</a
+              >
+            </div>
+          </div>
+
+          <!-- Link Level Atas Lainnya -->
+          <a href="whats-new.html" class="active">
+            <!-- Halaman ini aktif -->
+            <i data-lucide="star" class="sidebar-nav__icon"></i>
+            What's New
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="dialog.html"><i data-lucide="panel-top" class="sidebar-nav__icon"></i> Dialog / Modal</a>
-            <a href="progress-bar.html"><i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i> Progress
-              Bar</a>
-            <a href="tabel.html"><i data-lucide="table" class="sidebar-nav__icon"></i> Data Tables</a>
-          </div>
-        </div>
+        </nav>
 
-        <!-- Link Level Atas Lainnya -->
-        <a href="whats-new.html" class="active"> <!-- Halaman ini aktif -->
-          <i data-lucide="star" class="sidebar-nav__icon"></i>
-          What's New
-        </a>
-      </nav>
+        <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
+        <div class="sidebar-footer">
+          <button id="userSettingsToggle" class="sidebar-user-button">
+            <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+            <span>Pengguna</span>
+            <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+          </button>
 
-      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
-      <div class="sidebar-footer">
-        <button id="userSettingsToggle" class="sidebar-user-button">
-          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
-          <span>Pengguna</span>
-          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
-        </button>
-
-        <div id="userSettingsMenu" class="user-settings-menu">
-          <ul class="user-settings-list">
-            <li><a href="#"><i data-lucide="user" class="user-settings-icon"></i><span>Profil Saya</span></a></li>
-            <li><a href="#"><i data-lucide="sliders-horizontal"
-                  class="user-settings-icon"></i><span>Pengaturan</span></a></li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li class="user-settings-item">
-              <span class="user-settings-label">Mode Malam</span>
-              <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle" />
-                <span class="toggle-slider"></span>
-              </label>
-            </li>
-            <li class="user-settings-item">
-              <div id="themeColorPicker" class="theme-picker"></div>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li><a href="#" class="text-danger"><i data-lucide="log-out"
-                  class="user-settings-icon"></i><span>Keluar</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
-    <main class="main-content">
-      <div class="container my-5">
-        <header class="mb-5">
-          <h1 class="fs-2">What's New</h1>
-          <p>By Devkita</p>
-        </header>
-
-        <div class="panel mb-5">
-          <div class="panel-header">
-            <h4 class="panel-title">>> Versi 1.0 - The Foundation</h4>
-          </div>
-          <div class="panel-body">
-            <p><strong>Tanggal Rilis:</strong> [Tanggal Hari Ini]</p>
-            <p>
-              Ini adalah rilis awal dari TemplateKita. Fitur utama yang
-              ditambahkan:
-            </p>
-            <ul>
+          <div id="userSettingsMenu" class="user-settings-menu">
+            <ul class="user-settings-list">
               <li>
-                Struktur layout dasar dengan sidebar dan area konten utama.
+                <a href="#"
+                  ><i data-lucide="user" class="user-settings-icon"></i
+                  ><span>Profil Saya</span></a
+                >
               </li>
               <li>
-                Fungsionalitas Dark Mode dengan toggle dan penyimpanan
-                preferensi di localStorage.
+                <a href="#"
+                  ><i
+                    data-lucide="sliders-horizontal"
+                    class="user-settings-icon"
+                  ></i
+                  ><span>Pengaturan</span></a
+                >
               </li>
               <li>
-                Pemisahan dokumentasi komponen ke dalam halaman-halaman
-                terpisah.
+                <hr class="form-divider m-0" />
+              </li>
+              <li class="user-settings-item">
+                <span class="user-settings-label">Mode Malam</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="darkModeToggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </li>
+              <li class="user-settings-item">
+                <div id="themeColorPicker" class="theme-picker"></div>
               </li>
               <li>
-                Komponen awal yang telah dibuat: Panel, Button, Form Elements,
-                Dialog, dan Progress Bar.
+                <hr class="form-divider m-0" />
               </li>
               <li>
-                Skrip JavaScript ringan untuk fungsionalitas interaktif
-                (Modal, Toggle).
+                <a href="#" class="text-danger"
+                  ><i data-lucide="log-out" class="user-settings-icon"></i
+                  ><span>Keluar</span></a
+                >
               </li>
             </ul>
           </div>
         </div>
-      </div>
-    </main>
-  </div>
+      </aside>
 
-  <script src="assets/script.js"></script>
-</body>
+      <!-- ===== KONTEN UTAMA (TIDAK DIUBAH) ===== -->
+      <main class="main-content">
+        <div class="container my-5">
+          <header class="mb-5">
+            <h1 class="fs-2">What's New</h1>
+            <p>By Devkita</p>
+          </header>
 
+          <div class="panel mb-5">
+            <div class="panel-header">
+              <h4 class="panel-title">>> Versi 1.0 - The Foundation</h4>
+            </div>
+            <div class="panel-body">
+              <p><strong>Tanggal Rilis:</strong> [Tanggal Hari Ini]</p>
+              <p>
+                Ini adalah rilis awal dari TemplateKita. Fitur utama yang
+                ditambahkan:
+              </p>
+              <ul>
+                <li>
+                  Struktur layout dasar dengan sidebar dan area konten utama.
+                </li>
+                <li>
+                  Fungsionalitas Dark Mode dengan toggle dan penyimpanan
+                  preferensi di localStorage.
+                </li>
+                <li>
+                  Pemisahan dokumentasi komponen ke dalam halaman-halaman
+                  terpisah.
+                </li>
+                <li>
+                  Komponen awal yang telah dibuat: Panel, Button, Form Elements,
+                  Dialog, dan Progress Bar.
+                </li>
+                <li>
+                  Skrip JavaScript ringan untuk fungsionalitas interaktif
+                  (Modal, Toggle).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>

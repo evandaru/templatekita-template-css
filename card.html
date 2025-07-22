@@ -1,270 +1,325 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TemplateKita - Card / Panel (Responsive)</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TemplateKita - Card / Panel (Responsive)</title>
-  <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- 1. Impor Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- 1. Impor Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+    <!-- 2. Hubungkan CSS -->
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-  <!-- 2. Hubungkan CSS -->
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
+  <body>
+    <!-- Tombol sidebar -->
+    <button
+      class="btn btn--icon sidebar-open-btn"
+      data-toggle-target="#mainSidebar"
+      data-toggle-class="is-open"
+      aria-label="Buka Menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
 
-<body>
-  <!-- [DIUBAH] Tombol sidebar sekarang menggunakan ikon SVG dari template -->
-  <button class="btn btn--icon sidebar-open-btn" data-toggle-target="#mainSidebar" data-toggle-class="is-open"
-    aria-label="Buka Menu">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
-
-  <div class="layout-wrapper">
-    <!-- ===== SIDEBAR (STRUKTUR BARU SESUAI TEMPLATE) ===== -->
-    <aside class="sidebar" id="mainSidebar">
-      <div class="sidebar-header">
-        <h3 class="fs-4">Navigasi</h3>
-      </div>
-
-      <!-- [DIUBAH] Navigasi sekarang menggunakan grup collapsible -->
-      <nav class="sidebar-nav">
-        <!-- Link Level Atas -->
-        <a href="index.html">
-          <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
-          Components Overview
-        </a>
-
-        <!-- Grup Collapsible 1: Basic Components (dibuat terbuka karena item di dalamnya aktif) -->
-        <div class="sidebar-collapsible is-open">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="layers" class="sidebar-nav__icon"></i>
-              Basic Components
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+    <div class="layout-wrapper">
+      <!-- ===== SIDEBAR ===== -->
+      <aside class="sidebar" id="mainSidebar">
+        <div class="sidebar-header">
+          <h3 class="fs-4">Navigasi</h3>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="index.html">
+            <i data-lucide="layout-grid" class="sidebar-nav__icon"></i>
+            Components Overview
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="card.html" class="active"> <!-- Halaman ini aktif -->
-              <i data-lucide="box" class="sidebar-nav__icon"></i>
-              Card / Panel
+          <div class="sidebar-collapsible is-open">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="layers" class="sidebar-nav__icon"></i>
+                Basic Components
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
             </a>
-            <a href="button.html">
-              <i data-lucide="square" class="sidebar-nav__icon"></i>
-              Buttons
-            </a>
-            <a href="form-elements.html">
-              <i data-lucide="form-input" class="sidebar-nav__icon"></i>
-              Form Elements
-            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="card.html" class="active">
+                <i data-lucide="box" class="sidebar-nav__icon"></i>
+                Card / Panel
+              </a>
+              <a href="button.html">
+                <i data-lucide="square" class="sidebar-nav__icon"></i>
+                Buttons
+              </a>
+              <a href="form-elements.html">
+                <i data-lucide="form-input" class="sidebar-nav__icon"></i>
+                Form Elements
+              </a>
+            </div>
           </div>
-        </div>
-
-        <!-- Grup Collapsible 2: Advanced Components -->
-        <div class="sidebar-collapsible">
-          <a href="#" class="sidebar-collapsible__toggle">
-            <span class="d-flex align-items-center">
-              <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
-              Advanced
-            </span>
-            <i data-lucide="chevron-right" class="sidebar-collapsible__icon"></i>
+          <div class="sidebar-collapsible">
+            <a href="#" class="sidebar-collapsible__toggle">
+              <span class="d-flex align-items-center">
+                <i data-lucide="codesandbox" class="sidebar-nav__icon"></i>
+                Advanced
+              </span>
+              <i
+                data-lucide="chevron-right"
+                class="sidebar-collapsible__icon"
+              ></i>
+            </a>
+            <div class="sidebar-collapsible__content">
+              <a href="dialog.html">
+                <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
+                Dialog / Modal
+              </a>
+              <a href="progress-bar.html">
+                <i
+                  data-lucide="bar-chart-horizontal"
+                  class="sidebar-nav__icon"
+                ></i>
+                Progress Bar
+              </a>
+              <a href="tabel.html">
+                <i data-lucide="table" class="sidebar-nav__icon"></i>
+                Data Tables
+              </a>
+            </div>
+          </div>
+          <a href="whats-new.html">
+            <i data-lucide="star" class="sidebar-nav__icon"></i>
+            What's New
           </a>
-          <div class="sidebar-collapsible__content">
-            <a href="dialog.html">
-              <i data-lucide="panel-top" class="sidebar-nav__icon"></i>
-              Dialog / Modal
-            </a>
-            <a href="progress-bar.html">
-              <i data-lucide="bar-chart-horizontal" class="sidebar-nav__icon"></i>
-              Progress Bar
-            </a>
-            <a href="tabel.html">
-              <i data-lucide="table" class="sidebar-nav__icon"></i>
-              Data Tables
-            </a>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="userSettingsToggle" class="sidebar-user-button">
+            <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
+            <span>Pengguna</span>
+            <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
+          </button>
+          <div id="userSettingsMenu" class="user-settings-menu">
+            <ul class="user-settings-list">
+              <li>
+                <a href="#">
+                  <i data-lucide="user" class="user-settings-icon"></i>
+                  <span>Profil Saya</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i
+                    data-lucide="sliders-horizontal"
+                    class="user-settings-icon"
+                  ></i>
+                  <span>Pengaturan</span>
+                </a>
+              </li>
+              <li><hr class="form-divider m-0" /></li>
+              <li class="user-settings-item">
+                <span class="user-settings-label">Mode Malam</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="darkModeToggle" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </li>
+              <li class="user-settings-item">
+                <div id="themeColorPicker" class="theme-picker"></div>
+              </li>
+              <li><hr class="form-divider m-0" /></li>
+              <li>
+                <a href="#" class="text-danger">
+                  <i data-lucide="log-out" class="user-settings-icon"></i>
+                  <span>Keluar</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
+      </aside>
 
-        <!-- Link Level Atas Lainnya -->
-        <a href="whats-new.html">
-          <i data-lucide="star" class="sidebar-nav__icon"></i>
-          What's New
-        </a>
-      </nav>
+      <!-- ===== KONTEN UTAMA ===== -->
+      <main class="main-content">
+        <div class="container my-5">
+          <header class="mb-5">
+            <h1 class="fs-2">Variasi Card / Panel</h1>
+            <p>
+              Contoh penggunaan komponen <code>.panel</code> dalam berbagai
+              skenario, kini sepenuhnya responsif.
+            </p>
+          </header>
 
-      <!-- [DIUBAH] Footer Sidebar dengan Menu Pengaturan Pengguna dari Template -->
-      <div class="sidebar-footer">
-        <button id="userSettingsToggle" class="sidebar-user-button">
-          <i data-lucide="user-circle-2" class="sidebar-nav__icon"></i>
-          <span>Pengguna</span>
-          <i data-lucide="settings-2" class="sidebar-user-settings-icon"></i>
-        </button>
-
-        <div id="userSettingsMenu" class="user-settings-menu">
-          <ul class="user-settings-list">
-            <li>
-              <a href="#">
-                <i data-lucide="user" class="user-settings-icon"></i>
-                <span>Profil Saya</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i data-lucide="sliders-horizontal" class="user-settings-icon"></i>
-                <span>Pengaturan</span>
-              </a>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li class="user-settings-item">
-              <span class="user-settings-label">Mode Malam</span>
-              <label class="toggle-switch">
-                <input type="checkbox" id="darkModeToggle" />
-                <span class="toggle-slider"></span>
-              </label>
-            </li>
-            <li class="user-settings-item">
-              <div id="themeColorPicker" class="theme-picker">
-                <!-- Tombol warna akan dibuat oleh JavaScript -->
+          <div class="row">
+            <!-- 1. Panel Standar dengan Header -->
+            <div class="panel">
+              <div class="panel-header">
+                <h4 class="panel-title">Panel Standar</h4>
               </div>
-            </li>
-            <li>
-              <hr class="form-divider m-0">
-            </li>
-            <li>
-              <a href="#" class="text-danger">
-                <i data-lucide="log-out" class="user-settings-icon"></i>
-                <span>Keluar</span>
-              </a>
-            </li>
-          </ul>
+              <div class="panel-body">
+                <p>
+                  Ini adalah panel paling dasar dengan judul dan area konten.
+                  Cocok untuk menampilkan informasi umum.
+                </p>
+              </div>
+            </div>
+
+            <!-- 2. Panel Aksi dengan Footer -->
+            <div class="panel">
+              <div class="panel-header">
+                <h4 class="panel-title">Simpan Perubahan?</h4>
+              </div>
+              <div class="panel-body">
+                <p>
+                  File konfigurasi Anda telah diubah. Simpan perubahan sebelum
+                  keluar?
+                </p>
+              </div>
+              <div class="panel-footer d-flex justify-content-between">
+                <button class="btn">Batal</button>
+                <button class="btn btn--primary">Simpan</button>
+              </div>
+            </div>
+
+            <!-- 3. Panel Login Form -->
+            <div class="panel">
+              <div class="panel-header">
+                <h4 class="panel-title">USER LOGIN</h4>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <label for="username" class="form-label">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    class="form-control"
+                    placeholder="user_id"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="password" class="form-label">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="********"
+                  />
+                </div>
+                <button class="btn btn-block mt-4 btn--primary">LOGIN</button>
+              </div>
+            </div>
+
+            <!-- 4. Panel Daftar Item (List Group) -->
+            <div class="panel">
+              <div class="panel-header">
+                <h4 class="panel-title">Daftar Tugas</h4>
+              </div>
+              <div class="panel-body p-0">
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-action active">
+                    Selesaikan dokumentasi
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Desain halaman baru
+                  </li>
+                  <li class="list-group-item list-group-item-action disabled">
+                    Deploy ke server
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 5. Panel Gambar dengan Teks -->
+            <div class="panel">
+              <img
+                src="https://placehold.co/600x400"
+                alt="Gambar Abstrak"
+                class="panel-img"
+              />
+              <div class="panel-body">
+                <h5 class="fs-5">Judul Artikel</h5>
+                <p class="text-muted">
+                  Ini adalah deskripsi singkat dari gambar di atas. Cocok untuk
+                  kartu blog atau produk.
+                </p>
+                <a href="#" class="link-primary">Baca lebih lanjut...</a>
+              </div>
+            </div>
+
+            <!-- 6. [DIUBAH] Panel Status Sistem dengan Radix UI Style -->
+            <div class="panel">
+              <div class="panel-header">
+                <h4 class="panel-title">Status Sistem</h4>
+              </div>
+              <div class="panel-body">
+                <div class="status-list">
+                  <!-- Contoh Status OK -->
+                  <div class="status-item">
+                    <span
+                      class="status-indicator status-indicator--success status-indicator--animated"
+                    ></span>
+                    <div class="status-content">
+                      <p class="status-title">API Utama</p>
+                      <p class="status-description">
+                        Semua sistem berjalan normal.
+                      </p>
+                    </div>
+                    <span class="badge badge--success">Operational</span>
+                  </div>
+
+                  <!-- Contoh Status Peringatan -->
+                  <div class="status-item">
+                    <span
+                      class="status-indicator status-indicator--warning status-indicator--animated"
+                    ></span>
+                    <div class="status-content">
+                      <p class="status-title">Server Basis Data</p>
+                      <p class="status-description">Penggunaan disk 85%.</p>
+                    </div>
+                    <span class="badge badge--warning">Warning</span>
+                  </div>
+
+                  <!-- Contoh Status Bahaya/Error -->
+                  <div class="status-item">
+                    <span
+                      class="status-indicator status-indicator--danger status-indicator--animated"
+                    ></span>
+                    <div class="status-content">
+                      <p class="status-title">Layanan Antrian</p>
+                      <p class="status-description">Layanan tidak merespon.</p>
+                    </div>
+                    <span class="badge badge--danger">Outage</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Akhir dari .row -->
         </div>
-      </div>
-    </aside>
+      </main>
+    </div>
 
-    <!-- ===== KONTEN UTAMA (KONTEN ASLI ANDA TIDAK DIUBAH) ===== -->
-    <main class="main-content">
-      <div class="container my-5">
-        <header class="mb-5">
-          <h1 class="fs-2">Variasi Card / Panel</h1>
-          <p>
-            Contoh penggunaan komponen <code>.panel</code> dalam berbagai
-            skenario, kini sepenuhnya responsif.
-          </p>
-        </header>
-
-        <div class="row">
-          <!-- 1. Panel Standar dengan Header -->
-          <div class="panel">
-            <div class="panel-header">
-              <h4 class="panel-title">Panel Standar</h4>
-            </div>
-            <div class="panel-body">
-              <p>
-                Ini adalah panel paling dasar dengan judul dan area konten.
-                Cocok untuk menampilkan informasi umum.
-              </p>
-            </div>
-          </div>
-
-          <!-- 2. Panel Aksi dengan Footer -->
-          <div class="panel">
-            <div class="panel-header">
-              <h4 class="panel-title">Simpan Perubahan?</h4>
-            </div>
-            <div class="panel-body">
-              <p>
-                File konfigurasi Anda telah diubah. Simpan perubahan sebelum
-                keluar?
-              </p>
-            </div>
-            <div class="panel-footer d-flex justify-content-between">
-              <button class="btn">Batal</button>
-              <button class="btn">Simpan</button>
-            </div>
-          </div>
-
-          <!-- 3. Panel Login Form -->
-          <div class="panel">
-            <div class="panel-header">
-              <h4 class="panel-title">USER LOGIN</h4>
-            </div>
-            <div class="panel-body">
-              <div class="form-group">
-                <label for="username" class="form-label">Username:</label>
-                <input type="text" id="username" class="form-control" placeholder="user_id" />
-              </div>
-              <div class="form-group">
-                <label for="password" class="form-label">Password:</label>
-                <input type="password" id="password" class="form-control" placeholder="********" />
-              </div>
-              <button class="btn btn-block mt-4">LOGIN</button>
-            </div>
-          </div>
-
-          <!-- 4. Panel Daftar Item (List Group) -->
-          <div class="panel">
-            <div class="panel-header">
-              <h4 class="panel-title">Daftar Tugas</h4>
-            </div>
-            <div class="panel-body p-0">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-action active">
-                  Selesaikan dokumentasi
-                </li>
-                <li class="list-group-item list-group-item-action">
-                  Desain halaman baru
-                </li>
-                <li class="list-group-item list-group-item-action disabled">
-                  Deploy ke server
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 5. Panel Gambar dengan Teks -->
-          <div class="panel">
-            <img src="https://placehold.co/600x400" alt="Gambar Abstrak" class="panel-img" />
-            <div class="panel-body">
-              <h5 class="fs-5">Judul Artikel</h5>
-              <p class="text-muted">
-                Ini adalah deskripsi singkat dari gambar di atas. Cocok untuk
-                kartu blog atau produk.
-              </p>
-              <a href="#" class="link-primary">Baca lebih lanjut...</a>
-            </div>
-          </div>
-
-          <!-- 6. Panel Notifikasi/Alert di Dalam Panel -->
-          <div class="panel">
-            <div class="panel-header">
-              <h4 class="panel-title">Status Sistem</h4>
-            </div>
-            <div class="panel-body">
-              <div class="alert alert-success">
-                <strong>OK:</strong> Semua sistem berjalan normal.
-              </div>
-              <div class="alert alert-warning mt-3">
-                <strong>WARN:</strong> Penggunaan disk 85%.
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Akhir dari .row -->
-      </div>
-    </main>
-  </div>
-
-  <script src="assets/script.js"></script>
-</body>
-
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
