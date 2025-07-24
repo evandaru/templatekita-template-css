@@ -28,44 +28,74 @@
 
   /**
    * Inisialisasi semua fungsionalitas Modal.
+   * [MODIFIKASI] Diperbarui agar latar belakang tidak bisa diklik untuk menutup.
    */
   function initModals() {
     const modalTriggers = document.querySelectorAll("[data-modal-target]");
     const modalCloses = document.querySelectorAll("[data-modal-close]");
 
+    // Fungsi helper untuk membuka modal
+    function openModal(modal) {
+      if (modal) {
+        modal.classList.add("is-open");
+        // Mencegah body scroll saat modal aktif
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    // Fungsi helper untuk menutup modal
+    function closeModal(modal) {
+      if (modal) {
+        modal.classList.remove("is-open");
+        // Kembalikan scroll pada body HANYA jika tidak ada modal lain yang terbuka
+        if (document.querySelectorAll(".modal.is-open").length === 0) {
+          document.body.style.overflow = "";
+        }
+      }
+    }
+
     modalTriggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
         const modalId = trigger.getAttribute("data-modal-target");
         const modal = document.querySelector(modalId);
-        if (modal) {
-          modal.classList.add("is-open");
-        }
+        openModal(modal);
       });
     });
 
     modalCloses.forEach((closer) => {
       closer.addEventListener("click", () => {
         const modal = closer.closest(".modal");
-        if (modal) {
-          modal.classList.remove("is-open");
-        }
+        closeModal(modal);
       });
     });
 
+    /*
+     * [MODIFIKASI SESUAI PERMINTAAN]
+     * Blok kode di bawah ini telah dinonaktifkan dengan mengubahnya menjadi komentar.
+     * Tujuannya adalah agar modal TIDAK tertutup saat pengguna mengklik area
+     * latar belakang (overlay hitam). Pengguna kini harus secara eksplisit mengklik
+     * tombol tutup (X) atau tombol lain dengan atribut `data-modal-close`.
+     */
+    /*
     document.addEventListener("click", (event) => {
       if (
         event.target.classList.contains("modal") &&
         event.target.classList.contains("is-open")
       ) {
-        event.target.classList.remove("is-open");
+        // Cek jika modal tidak static sebelum menutup
+        if (!event.target.hasAttribute('data-modal-static')) {
+           closeModal(event.target);
+        }
       }
     });
+    */
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         const openModal = document.querySelector(".modal.is-open");
-        if (openModal) {
-          openModal.classList.remove("is-open");
+        // Hanya tutup jika modal ada dan tidak memiliki atribut data-modal-static
+        if (openModal && !openModal.hasAttribute("data-modal-static")) {
+          closeModal(openModal);
         }
       }
     });
@@ -189,8 +219,6 @@
       { name: "violet", color: "hsl(262, 85%, 58%)" },
       { name: "rose", color: "hsl(340, 82%, 52%)" },
       { name: "black", color: "hsl(0, 0%, 10%)" },
-      // { name: "gray", color: "hsl(0, 0%, 50%)" },
-      // { name: "yellow", color: "hsl(45, 100%, 50%)" },
     ];
 
     const themePicker = document.getElementById("themeColorPicker");
@@ -201,7 +229,6 @@
     if (!themePicker || !darkModeToggle || !settingsToggle || !settingsMenu)
       return;
 
-    // --- Fungsi untuk Warna Tema ---
     function applyColorTheme(themeName) {
       document.documentElement.setAttribute("data-color-theme", themeName);
       localStorage.setItem("ui-color-theme", themeName);
@@ -217,7 +244,6 @@
       });
     }
 
-    // Buat tombol-tombol warna
     themes.forEach((theme) => {
       const btn = document.createElement("button");
       btn.className = "theme-color-btn";
@@ -228,7 +254,6 @@
       themePicker.appendChild(btn);
     });
 
-    // --- Fungsi untuk Mode Malam ---
     function applyDarkMode(isDark) {
       if (isDark) {
         document.documentElement.setAttribute("data-theme", "dark");
@@ -239,7 +264,6 @@
       darkModeToggle.checked = isDark;
     }
 
-    // --- Event Listeners ---
     darkModeToggle.addEventListener("change", () => {
       applyDarkMode(darkModeToggle.checked);
     });
@@ -259,7 +283,6 @@
       }
     });
 
-    // --- Inisialisasi saat memuat halaman ---
     const savedColorTheme = localStorage.getItem("ui-color-theme") || "blue";
     applyColorTheme(savedColorTheme);
 
@@ -273,10 +296,6 @@
     applyDarkMode(savedDarkMode);
   }
 
-  /**
-   * [BARU] Menginisialisasi fungsionalitas tabel interaktif termasuk
-   * Pencarian, Pengurutan, dan Pagination.
-   */
   function initInteractiveDataTable() {
     const panel = document.getElementById("interactive-datatable-panel");
     if (!panel) return;
@@ -288,11 +307,10 @@
     const headers = panel.querySelectorAll(".sortable-header");
     const tableInfo = panel.querySelector("#table-info");
 
-    // Simpan semua baris asli sekali
     const originalRows = Array.from(tableBody.querySelectorAll("tr"));
     let currentRows = [...originalRows];
     let currentPage = 1;
-    let rowsPerPage = parseInt(entriesSelect?.value || 10); // Ambil nilai dari select, default 10
+    let rowsPerPage = parseInt(entriesSelect?.value || 10);
 
     function displayPage(page) {
       currentPage = page;
@@ -302,21 +320,17 @@
       const end = Math.min(start + rowsPerPage, totalRows);
       const paginatedItems = currentRows.slice(start, end);
 
-      // Tambahkan baris ke tabel
       paginatedItems.forEach((row) => tableBody.appendChild(row));
 
-      // Perbarui informasi jumlah data
       if (totalRows === 0) {
         tableInfo.textContent = "Tidak ada data ditemukan";
         const colCount = headers.length || 4;
         tableBody.innerHTML = `<tr><td colspan="${colCount}" class="text-center text-muted p-4">Tidak ada data ditemukan</td></tr>`;
       } else {
-        tableInfo.textContent = `Menampilkan ${
-          start + 1
-        } - ${end} dari ${totalRows} entri`;
+        tableInfo.textContent = `Menampilkan ${start + 1
+          } - ${end} dari ${totalRows} entri`;
       }
 
-      // Perbarui kontrol pagination
       setupPaginationControls(totalRows);
     }
 
@@ -324,25 +338,21 @@
       paginationContainer.innerHTML = "";
       const pageCount = Math.ceil(totalRows / rowsPerPage);
       if (pageCount <= 1 && totalRows > 0) {
-        // Jika hanya satu halaman, tetap tampilkan tombol halaman 1
         const pageLi = document.createElement("li");
         pageLi.className = "page-item active";
         pageLi.innerHTML = `<a class="page-link" href="#" data-page="1">1</a>`;
         paginationContainer.appendChild(pageLi);
         return;
       } else if (totalRows === 0) {
-        return; // Tidak ada pagination jika tidak ada data
+        return;
       }
 
-      // Tombol "Previous"
       const prevLi = document.createElement("li");
       prevLi.className = `page-item${currentPage === 1 ? " disabled" : ""}`;
-      prevLi.innerHTML = `<a class="page-link" href="#" data-page="${
-        currentPage - 1
-      }" aria-label="Sebelumnya">«</a>`;
+      prevLi.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1
+        }" aria-label="Sebelumnya">«</a>`;
       paginationContainer.appendChild(prevLi);
 
-      // Tombol Halaman
       for (let i = 1; i <= pageCount; i++) {
         const pageLi = document.createElement("li");
         pageLi.className = `page-item${i === currentPage ? " active" : ""}`;
@@ -350,32 +360,27 @@
         paginationContainer.appendChild(pageLi);
       }
 
-      // Tombol "Next"
       const nextLi = document.createElement("li");
-      nextLi.className = `page-item${
-        currentPage === pageCount ? " disabled" : ""
-      }`;
-      nextLi.innerHTML = `<a class="page-link" href="#" data-page="${
-        currentPage + 1
-      }" aria-label="Berikutnya">»</a>`;
+      nextLi.className = `page-item${currentPage === pageCount ? " disabled" : ""
+        }`;
+      nextLi.innerHTML = `<a class="page-link" href="#" data-page="${currentPage + 1
+        }" aria-label="Berikutnya">»</a>`;
       paginationContainer.appendChild(nextLi);
     }
 
     function updateTable() {
       const searchTerm = searchInput.value.toLowerCase();
 
-      // Filter berdasarkan pencarian
       currentRows = originalRows.filter((row) => {
         return row.textContent.toLowerCase().includes(searchTerm);
       });
 
-      // Terapkan sorting yang sedang aktif (jika ada)
       const activeSorter = panel.querySelector(".sorted-asc, .sorted-desc");
       if (activeSorter) {
-        sortRows(activeSorter, false); // Sort tanpa update DOM
+        sortRows(activeSorter, false);
       }
 
-      displayPage(1); // Kembali ke halaman pertama setelah search/sort
+      displayPage(1);
     }
 
     function sortRows(header, shouldUpdateDOM = true) {
@@ -414,14 +419,12 @@
       }
     }
 
-    // --- Event Listeners ---
     searchInput.addEventListener("input", updateTable);
 
-    // Event listener untuk perubahan jumlah entri
     if (entriesSelect) {
       entriesSelect.addEventListener("change", () => {
         rowsPerPage = parseInt(entriesSelect.value);
-        displayPage(1); // Kembali ke halaman pertama
+        displayPage(1);
       });
     }
 
@@ -444,13 +447,9 @@
       }
     });
 
-    // --- Initial Load ---
     displayPage(1);
   }
 
-  /**
-   * Fungsi GLOBAL untuk membuat Alert secara dinamis.
-   */
   window.createBrutalistAlert = function (
     message,
     type = "info",
@@ -470,11 +469,9 @@
     }
 
     const alertEl = document.createElement("div");
-    // Menggunakan kelas .alert dari CSS yang sudah di-re-skin
     alertEl.className = `alert alert-${type}`;
     alertEl.setAttribute("role", "alert");
 
-    // Menggunakan tombol close yang sudah ada gayanya
     alertEl.innerHTML = `<div class="d-flex justify-content-between align-items-center"><span>${message}</span><button class="btn-close" aria-label="Tutup"></button></div>`;
 
     container.prepend(alertEl);
@@ -493,9 +490,6 @@
     }
   };
 
-  /**
-   * [BARU] Inisialisasi untuk Button Toggle Groups.
-   */
   function initToggleButtonGroups() {
     const toggleGroup = document.getElementById("toggleGroup");
     if (toggleGroup) {
@@ -508,45 +502,33 @@
       });
     }
   }
+
   function initCollapsibleSidebar() {
-    // 1. Logika untuk membuat menu bisa dilipat (collapsible)
     const toggles = document.querySelectorAll(".sidebar-collapsible__toggle");
-    if (toggles.length === 0) return; // Keluar jika tidak ada menu collapsible
+    if (toggles.length === 0) return;
 
     toggles.forEach((toggle) => {
       toggle.addEventListener("click", function (event) {
-        // Mencegah link '#' melakukan navigasi atau lompat ke atas halaman
         event.preventDefault();
-
-        // Cari elemen induk terdekat dengan kelas .sidebar-collapsible
         const parent = this.closest(".sidebar-collapsible");
-
-        // Jika ditemukan, tambahkan atau hapus kelas 'is-open'
         if (parent) {
           parent.classList.toggle("is-open");
         }
       });
     });
 
-    // 2. Logika untuk membuka menu yang relevan secara otomatis saat halaman dimuat
-    // Cari link sub-menu yang memiliki kelas 'active'
     const activeSubLink = document.querySelector(
       ".sidebar-collapsible__content a.active"
     );
 
     if (activeSubLink) {
-      // Cari elemen induk .sidebar-collapsible dari link aktif tersebut
       const parentMenu = activeSubLink.closest(".sidebar-collapsible");
       if (parentMenu) {
-        // Tambahkan kelas 'is-open' agar menu tersebut terbuka
         parentMenu.classList.add("is-open");
       }
     }
   }
 
-  /**
-   * [BARU] Inisialisasi untuk Demo Progress Bar.
-   */
   function initProgressBarDemos() {
     const animateBtn = document.getElementById("animate-btn");
     if (animateBtn) {

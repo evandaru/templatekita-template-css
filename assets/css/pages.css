@@ -124,3 +124,65 @@
   font-size: 0.9rem;
   color: var(--text-muted);
 }
+
+/* ======================================================= */
+/* [FIX] Tambahkan kode ini untuk membuat grid responsif  */
+/* ======================================================= */
+
+.nav-grid {
+  display: grid;
+  /* Gunakan auto-fit untuk membuat kolom secara otomatis */
+  /* Setiap kolom akan memiliki lebar minimal 280px dan akan membesar (1fr) untuk mengisi ruang */
+  /* Saat tidak cukup ruang, kartu akan otomatis pindah ke baris baru */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  /* Jarak antar kartu */
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--surface-bg);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: 12px;
+  /* Samakan dengan style .panel */
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  /* Efek mengangkat sedikit saat di-hover */
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.nav-card__icon {
+  font-family: 'VT323', monospace;
+  /* Gunakan font yang sama dengan judul */
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.nav-card__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.nav-card__desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: auto;
+  /* Mendorong deskripsi ke bawah jika tinggi kartu tidak sama */
+}
+
+/* [OPSIONAL] Perbaiki juga HTML yang keliru */
+/* Hapus kelas .container dari kartu pertama di file HTML Anda. */
+/* Ubah dari: */
+/* <a href="card.html" class="nav-card container"> */
+/* Menjadi: */
+/* <a href="card.html" class="nav-card"> */

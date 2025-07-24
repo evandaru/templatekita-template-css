@@ -1,16 +1,41 @@
 /* layout.css */
 
-/* ---------------------------------- */
-/* #SECTION 3: Layout (Grid & Container)  */
-/* ---------------------------------- */
+/* ==========================================================================
+   #SECTION 1: Konfigurasi Dasar & Variabel (Asumsi)
+   ========================================================================== */
 
+/*
+  Catatan: Diasumsikan Anda memiliki variabel ini di file lain (misal: root.css)
+  :root {
+    --surface-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --border-width: 1px;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --brut-background-secondary: #f3f4f6;
+  }
+*/
+
+
+/* ==========================================================================
+   #SECTION 2: Layout (Container & Grid System)
+   ========================================================================== */
+
+/**
+ * Container utama dengan lebar terbatas (centered).
+ * Padding ditambahkan untuk memastikan konten tidak menempel pada tepi layar
+ * pada perangkat mobile.
+ */
 .container {
   width: 100%;
-  /* padding: 0 1rem; */
-  /* Padding modern */
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  /* Padding untuk gutter di sisi luar */
+  padding-left: 1.5rem;
+  /* Padding untuk gutter di sisi luar */
 }
 
+/* Breakpoints standar untuk container */
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -31,47 +56,78 @@
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 11400px;
+    max-width: 1140px;
   }
 }
 
+/* PERBAIKAN: Dari 11400px menjadi 1140px */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Tambahan: Breakpoint modern untuk layar lebih besar */
+
+/**
+ * Container dengan lebar penuh (full-width).
+ * Tetap memiliki padding agar konten tidak menempel di tepi.
+ */
 .container-fluid {
   width: 100%;
-  padding: 0 1.5rem;
-  /* Padding modern */
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
 
+/**
+ * Row (Baris) untuk sistem grid Flexbox.
+ * Menggunakan display: flex untuk menampung kolom (col-*).
+ * Margin negatif digunakan untuk meniadakan padding dari kolom pertama dan terakhir,
+ * sehingga konten di dalam kolom tetap sejajar dengan container.
+ */
 .row {
-  display: grid;
-  /* Setiap kolom minimal 320px, jika ada ruang lebih, akan membesar. */
-  /* Jika tidak muat, akan pindah ke baris baru. */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  /* Jarak yang lebih konsisten */
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  /* Kompensasi untuk padding kolom */
+  margin-left: -15px;
+  /* Kompensasi untuk padding kolom */
 }
 
-.col,
+/**
+ * Kolom (Column) dasar.
+ * Padding di sini menciptakan "gutter" atau jarak antar kolom.
+ * PERBAIKAN: Menghapus properti flex dari sini untuk menghindari konflik,
+ * dan membiarkannya diatur oleh class .col atau .col-*.
+ */
 [class*="col-"] {
   width: 100%;
-  padding: 0 15px;
-  /* Dipertahankan dari asli */
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  /* Berguna untuk positioning elemen di dalam kolom */
 }
 
+/* Kolom dengan lebar otomatis */
 .col {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
+/* Definisi lebar kolom berbasis 12-kolom (Flexbox) */
 .col-1 {
-  flex: 0 0 8.33%;
-  max-width: 8.33%;
+  flex: 0 0 8.333333%;
+  max-width: 8.333333%;
 }
 
 .col-2 {
-  flex: 0 0 16.66%;
-  max-width: 16.66%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
 }
 
 .col-3 {
@@ -80,13 +136,13 @@
 }
 
 .col-4 {
-  flex: 0 0 33.33%;
-  max-width: 33.33%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
 }
 
 .col-5 {
-  flex: 0 0 41.66%;
-  max-width: 41.66%;
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
 }
 
 .col-6 {
@@ -95,13 +151,13 @@
 }
 
 .col-7 {
-  flex: 0 0 58.33%;
-  max-width: 58.33%;
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
 }
 
 .col-8 {
-  flex: 0 0 66.66%;
-  max-width: 66.66%;
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
 }
 
 .col-9 {
@@ -110,13 +166,13 @@
 }
 
 .col-10 {
-  flex: 0 0 83.33%;
-  max-width: 83.33%;
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
 }
 
 .col-11 {
-  flex: 0 0 91.66%;
-  max-width: 91.66%;
+  flex: 0 0 91.666667%;
+  max-width: 91.666667%;
 }
 
 .col-12 {
@@ -124,9 +180,28 @@
   max-width: 100%;
 }
 
-/* --- Layout Sidebar --- */
+
+/**
+ * [BARU] Grid Responsif Otomatis (CSS Grid)
+ * Ini adalah implementasi dari ide awal Anda pada `.row`.
+ * Sangat cocok untuk galeri kartu (card gallery) atau layout sejenis.
+ * Setiap kolom minimal 320px, dan akan mengisi ruang yang tersedia secara merata.
+ */
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  /* Jarak antar item grid */
+}
+
+/* ==========================================================================
+   #SECTION 3: Layout Utama (Sidebar & Konten)
+   ========================================================================== */
+
 .layout-wrapper {
   display: flex;
+  position: relative;
+  /* Diperlukan untuk overlay */
 }
 
 .sidebar {
@@ -137,31 +212,60 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  padding: 20px;
+  z-index: 1000;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-in-out;
 }
 
 .main-content {
   margin-left: 260px;
   width: calc(100% - 260px);
-  padding: 20px;
+  padding: 1.5rem;
+  transition: margin-left 0.3s ease-in-out;
 }
 
-/* Tombol untuk membuka sidebar di mobile */
-.sidebar-open-btn {
+/* Tombol untuk membuka/menutup sidebar di mobile */
+.sidebar-toggle-btn {
   background-color: var(--surface-bg);
+  border: var(--border-width) solid var(--border-color);
   position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 101;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  /* Harus di atas sidebar */
   display: none;
+  /* Muncul hanya di mobile */
   border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
-/* Style Responsif untuk Sidebar */
+/**
+ * [BARU] Overlay untuk sidebar mobile.
+ * Meningkatkan UX dengan memfokuskan pengguna pada sidebar saat terbuka.
+ */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  /* Di bawah sidebar, di atas konten */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.sidebar-overlay.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* --- Style Responsif untuk Sidebar --- */
 @media (max-width: 992px) {
   .sidebar {
     transform: translateX(-100%);
@@ -169,7 +273,8 @@
 
   .sidebar.is-open {
     transform: translateX(0);
-    box-shadow: 0 4px 6px -1px var(--shadow-color);
+    box-shadow: 0 4px 15px -2px var(--shadow-color);
+    /* Shadow lebih baik */
   }
 
   .main-content {
@@ -177,43 +282,52 @@
     width: 100%;
   }
 
-  .sidebar-open-btn {
+  .sidebar-toggle-btn {
     display: flex;
+    /* Atau block, sesuai isi tombol */
+    align-items: center;
+    justify-content: center;
   }
 }
+
+/* ==========================================================================
+   #SECTION 4: Komponen Utilitas
+   ========================================================================== */
 
 /* Wrapper Responsif untuk Tabel */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* Untuk scrolling halus di iOS lama */
   border: var(--border-width) solid var(--border-color);
   border-radius: 8px;
-  /* Sudut melengkung */
 }
 
-.table-responsive > .data-table {
+/* Menghindari border ganda jika tabel di dalamnya sudah punya border */
+.table-responsive>.data-table {
   border: none;
+  width: 100%;
+  /* Pastikan tabel mengisi wrapper */
+  min-width: 600px;
+  /* Contoh min-width agar scroll muncul */
 }
 
 /* ==========================================================================
-   Layout Halaman Login
+   #SECTION 5: Layout Halaman Spesifik (Contoh: Login)
    ========================================================================== */
+
 .login-page {
   display: flex;
   align-items: center;
-  /* Pusatkan secara vertikal */
   justify-content: center;
-  /* Pusatkan secara horizontal */
   min-height: 100vh;
-  /* Pastikan body mengisi seluruh tinggi layar */
-  background-color: var(--brut-background-secondary);
-  /* Gunakan warna latar belakang sekunder */
+  background-color: var(--brut-background-secondary, #f3f4f6);
+  /* Fallback color */
   padding: 1rem;
 }
 
 .login-container {
   width: 100%;
   max-width: 420px;
-  /* Lebar maksimal form login */
 }
